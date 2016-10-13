@@ -12,5 +12,18 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap-sprockets
 //= require turbolinks
+//= require sb-admin-2
+//= require dataTables.bootstrap
+//= require dataTables.bootstrap4
+//= require dataTables.foundation
+//= require dataTables.jqueryui
+//= require dataTables.material
+//= require dataTables.responsive
+//= require dataTables.semanticui
+//= require dataTables.uikit
+//= require jquery.dataTables
+//= require metisMenu
+//= require raphael
 //= require_tree .
