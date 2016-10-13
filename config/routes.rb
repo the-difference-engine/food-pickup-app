@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  root 'pages#home'
-
+  devise_for :donors
+  root 'donors#index'
 end
