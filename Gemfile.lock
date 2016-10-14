@@ -41,10 +41,10 @@ GEM
     arel (7.1.4)
     autoprefixer-rails (6.4.0.3)
       execjs
+    bcrypt (3.1.11)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
-    bcrypt (3.1.11)
     builder (3.2.2)
     byebug (9.0.6)
     coffee-rails (4.2.1)
@@ -195,8 +195,8 @@ DEPENDENCIES
   bootstrap-sass
   byebug
   coffee-rails (~> 4.2)
-  font-awesome-rails
   devise
+  font-awesome-rails
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
