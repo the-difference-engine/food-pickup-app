@@ -10,6 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require metisMenu
  *= require sb-admin-2
  *= require bootstrap-social
  *= require dataTables.bootstrap
@@ -22,8 +23,11 @@
  *= require jquery.dataTables
  *= require jquery.dataTables_themeroller
  *= require dataTables.responsive
- *= require metisMenu
  *= require font-awesome
  *= require_tree .
  *= require_self
  */
+
+ .navbar-inline li {
+   display: inline-block;
+ }
