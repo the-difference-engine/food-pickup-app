@@ -21,6 +21,9 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+  <%= link_to "Open Terms and Conditions", 'https://docs.google.com/document/d/1DGdFBsgCOgUfR412dEPFW6WLMeGOIwEX7yvFVbYFc3o' %>
+  <%= f.check_box :terms %>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
