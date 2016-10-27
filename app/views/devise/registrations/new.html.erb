@@ -4,8 +4,33 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.label :contact_name %><br />
+    <%= f.text_field :contact_name %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :business_name %><br />
+    <%= f.text_field :business_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone_number %><br />
+    <%= f.text_field :phone_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :type_of_donor %><br />
+    <%= f.select :type_of_donor, ["Restaurant", "Catering Company", "Farm", "Retailer", "Event Company", "Office", "Personal Event"] %>
   </div>
 
   <div class="field">
