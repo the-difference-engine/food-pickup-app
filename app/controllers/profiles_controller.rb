@@ -1,4 +1,7 @@
 class ProfilesController < ApplicationController
+before_action :authorize_admin!
+
+
   def index
     @donors = Donor.where(approved: false)
   end
@@ -10,14 +13,9 @@ class ProfilesController < ApplicationController
   def update
     @donor = Donor.find_by(id: params[:id])
     @donor.update(
-    contact_name: params[:contact_name],
-    email: params[:email],
-    business_name: params[:business_name],
-    address: params[:address],
-    phone_number: params[:phone_number],
-    type_of_donor: params[:type_of_donor],
     approved: true
     )
+    redirect_to '/profiles'
   end
 
 end
