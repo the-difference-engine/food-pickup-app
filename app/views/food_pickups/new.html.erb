@@ -1,0 +1,30 @@
+<%= form_tag("/new-pickup", method: "post") do %>
+
+<div class="field">
+  <%= label_tag :picture %><br />
+  <%= text_field_tag :picture %>
+</div>
+
+<div class="field">
+  <%= label_tag :description %><br />
+  <%= text_field_tag :description %>
+</div>
+
+<div class="field">
+  <%= label_tag :quantity %><br />
+  <%= number_field_tag :quantity %>
+</div>
+
+<div class="field">
+  <%= label_tag :start_time %><br />
+  <%= datetime_field_tag :start_time %>
+</div>
+
+<div class="field">
+  <%= label_tag :end_time %><br />
+  <%= datetime_field_tag :end_time %>
+</div>
+
+<%= submit_tag "Submit" %>
+
+<% end %>
