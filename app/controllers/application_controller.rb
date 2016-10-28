@@ -8,4 +8,11 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:business_name, :address, :phone_number, :contact_name, :type_of_donor])
     devise_parameter_sanitizer.permit(:sign_up, keys: [:terms, :business_name, :address, :phone_number, :contact_name, :type_of_donor])
   end
+
+  def authorize_admin!
+     unless current_donor && current_donor.admin
+       flash[:warning]= "You have to be an Admin."
+       redirect_to '/'
+     end
+   end
 end

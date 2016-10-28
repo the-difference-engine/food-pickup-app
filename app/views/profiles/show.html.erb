@@ -26,7 +26,9 @@
 
 
 <div>
+  <% if !@donor.approved %>
   <%= button_to "Approve", "/profiles/#{@donor.id}", {method: :patch, class: "btn btn-success"} %>
+  <% end %>
 </div>
 
 <div>
