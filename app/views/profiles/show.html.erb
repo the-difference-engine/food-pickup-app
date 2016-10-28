@@ -1,0 +1,34 @@
+<h2> Donor Account </h2>
+
+<div>
+  <p> Contact Name: <%= @donor.contact_name %></P>
+</div>
+
+<div>
+  <P> Email: <%= @donor.email %> </p>
+</div>
+
+<div>
+  <p> Business Name: <%= @donor.business_name %></p>
+</div>
+
+<div>
+  <p> Address: <%= @donor.address %></p>
+</div>
+
+<div>
+  <p> Phone Number: <%= @donor.phone_number %></p>
+</div>
+
+<div>
+  <p> Type Of Donor: <%= @donor.type_of_donor %></P>
+</div>
+
+
+<div>
+  <%= button_to "Approve", "/profiles/#{@donor.id}", {method: :patch, class: "btn btn-success"} %>
+</div>
+
+<div>
+  <a href="profiles/"> Back to pending approval list</a>
+</div>
