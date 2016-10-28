@@ -2,7 +2,7 @@
 
 <% if donor_signed_in?%>
   <div><%= link_to "Sign Out", destroy_donor_session_path, :method => :delete %></div>
-
+  <div><%= link_to "Create a new pickup", "/new-pickup", :method => :get %></div>
 <% else %>
   <div><%= link_to "Create New Account", new_donor_registration_path %></div>
 

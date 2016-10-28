@@ -234,6 +234,23 @@
     </nav>
     <h3 class="notice"><%= notice %></h3>
     <h3 class="alert"><%= alert %></h3>
+
+    <% flash.each do |name, message| %>
+     <div class="alert alert-<%= name %> alert-dismissible" role="alert">
+     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+       <span aria-hidden="true">&times;</span></button>
+       <% if message.is_a?(Array) %>
+       <ul>
+         <% message.each do |msg| %>
+           <li><%= msg %></li>
+         <% end %>
+       </ul>
+       <% else %>
+         <h5><%= message %></h5>
+       <% end %>
+     </div>
+    <% end %>
+    
     <%= yield %>
 
   </body>
