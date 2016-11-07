@@ -11,7 +11,8 @@ before_action :authenticate_donor!
       quantity: params[:quantity],
       description: params[:description],
       start_time: params[:start_time],
-      end_time: params[:end_time]
+      end_time: params[:end_time],
+      location: params[:location]
     )
     if @food_pickup.valid?
       DonorPickup.create(

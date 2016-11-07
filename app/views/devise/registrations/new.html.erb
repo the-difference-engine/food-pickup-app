@@ -46,9 +46,12 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
-  <%= link_to "Open Terms and Conditions", 'https://docs.google.com/document/d/1DGdFBsgCOgUfR412dEPFW6WLMeGOIwEX7yvFVbYFc3o' %>
-  <%= f.check_box :terms %>
 
+  <div>
+  <%= link_to "Open Terms and Conditions", 'http://www.rescuingleftovercuisine.org/terms' %>
+  <h4>I agree to the terms and conditions:</h4>
+  <%= f.check_box :terms %>
+  </div>
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
