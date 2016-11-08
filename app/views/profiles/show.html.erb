@@ -27,10 +27,10 @@
 
 <div>
   <% if !@donor.approved %>
-  <%= button_to "Approve", "/profiles/#{@donor.id}", {method: :patch, class: "btn btn-success"} %>
+  <%= button_to "Pending - Click to Approve", "/profiles/#{@donor.id}", {method: :patch, class: "btn btn-warning"} %>
   <% end %>
 </div>
 
 <div>
-  <a href="profiles/"> Back to pending approval list</a>
+  <a href="/profiles"> Back to pending approval list</a>
 </div>

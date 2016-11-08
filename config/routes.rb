@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post '/new-pickup' => 'food_pickups#create'
   get 'profiles' => 'profiles#index'
   get 'profiles/:id' => 'profiles#show'
+  patch 'profiles/:id' => 'profiles#update'
 
   namespace :api do
     namespace :v1 do
