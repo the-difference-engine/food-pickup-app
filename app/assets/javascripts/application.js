@@ -13,7 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require turbolinks
+//= require angular
+//=require app
 //= require sb-admin-2
 //= require dataTables.bootstrap
 //= require dataTables.bootstrap4
