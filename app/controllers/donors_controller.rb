@@ -1,5 +1,6 @@
 class DonorsController < ApplicationController
   before_action :authenticate_donor!
+
   def index
     @food_pickups = current_donor.food_pickups
   end
