@@ -14,5 +14,10 @@ class ApplicationController < ActionController::Base
        flash[:warning]= "You have to be an Admin."
        redirect_to '/'
      end
-   end
+  end
+
+  def after_sign_in_path_for(resource)
+    return profiles_path if resource.admin
+    return root_path if !current_donor.admin
+  end
 end

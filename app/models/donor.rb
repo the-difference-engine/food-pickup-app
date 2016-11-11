@@ -8,4 +8,5 @@ class Donor < ApplicationRecord
   has_many :donor_pickups
   has_many :food_pickups, through: :donor_pickups
 
+  scope :not_admin, -> { where(admin: false) }
 end
