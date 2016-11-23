@@ -12,4 +12,7 @@ Rails.application.routes.draw do
       resources :profiles, only: [:index, :update]
     end
   end
+
+  get '/agreement' => 'food_pickups#agreement'
+  get '/generate_pdf' => 'food_pickups#generate_pdf'
 end

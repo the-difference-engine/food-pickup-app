@@ -1,3 +1,30 @@
 // Place all the styles related to the FoodPickups controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.form-paragraph {
+  margin-left: 50px;
+}
+
+.pickup-agreement{
+  margin: 100px;
+}
+
+#paragraph-underline{
+  text-decoration: underline;
+  margin-left: 50px;
+}
+
+#underline{
+  text-decoration: underline;
+}
+
+#center{
+  text-align: center;
+}
+
+#top-left-align{
+  position: relative;
+    top: 0px;
+    left: 0px;
+}

@@ -16,10 +16,10 @@ gem 'seed_dump'
 gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 gem 'bootstrap-sass'
 gem 'thematic'
 gem 'font-awesome-rails'
@@ -40,7 +40,9 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.5'
   gem 'pry-rails'
-end
+
+  gem 'dotenv-rails'
+
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
