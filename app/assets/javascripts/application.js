@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require angular
-//=require app
+//= require app
 //= require sb-admin-2
 //= require dataTables.bootstrap
 //= require dataTables.bootstrap4
