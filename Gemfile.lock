@@ -64,6 +64,10 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    dotenv (2.1.1)
+    dotenv-rails (2.1.1)
+      dotenv (= 2.1.1)
+      railties (>= 4.0, < 5.1)
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.14)
@@ -166,9 +170,12 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+<<<<<<< 2d8bab08f600b06d8521364ae1d8fd577687b292
     seed_dump (3.2.4)
       activerecord (>= 4)
       activesupport (>= 4)
+=======
+>>>>>>> converted html to pdf and set up mailgun for attachments
     slop (3.6.0)
     spring (2.0.0)
       activesupport (>= 4.2)
@@ -203,6 +210,8 @@ GEM
     websocket-driver (0.6.4)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
+    wicked_pdf (1.1.0)
+    wkhtmltopdf-binary (0.12.3.1)
 
 PLATFORMS
   ruby
@@ -212,6 +221,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
   devise
+  dotenv-rails
   font-awesome-rails
   jbuilder (~> 2.5)
   jquery-rails
@@ -231,6 +241,8 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console
+  wicked_pdf
+  wkhtmltopdf-binary
 
 BUNDLED WITH
    1.12.5

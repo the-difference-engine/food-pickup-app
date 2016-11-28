@@ -1,0 +1,147 @@
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= wicked_pdf_stylesheet_link_tag "stylesheets/application" %>
+<div class="pickup-agreement">
+
+<img src="http://www.rescuingleftovercuisine.org/assets/RLC_LOGO-900fcd5d7d719b63e43d29ac23775f74f17100194e2690e17833a091b016da85.png" alt="RLC" style="float: left;">
+
+<div align="right">
+<p><strong>Rescuing Leftover Cuisine, Inc.</strong></p>
+<p>Tel:(646) 460-1458</p>
+<p>info@rescuingleftovercuisine.org</p>
+<p>rescuingleftovercuisine.org</p>
+<p>Non-Profit Food Rescue Organization</p>
+</div>
+<br>
+<br>
+<br>
+<h2 id="center text-center" style="margin-left: 30%;">FOOD DONATION AGREEMENT</h2>
+<br>
+<p>This Food Donation Agreement (the "Agreement") is made and entered, as of the date written
+below, by and between Rescuing Leftover Cuisine, Inc. ("RLC") and <%= current_donor.business_name %>
+(“Partner”) (each, a “Party”; collectively, the “Parties”).</p>
+
+<p><strong>WHEREAS</strong>, Partner wishes to donate excess food to RLC; and</p>
+
+<p><strong>WHEREAS</strong>, RLC wishes to distribute excess food donated by Partner to homeless shelters, rescue
+missions, and other RLC clients;</p>
+
+<p><strong>NOW, THEREFORE,</strong> in consideration of the mutual covenants herein, and for other good and valuable
+consideration, the sufficiency of which is hereby acknowledged, the Parties agree as follows:</p>
+
+<p id="underline"> I.  Obligations of Partner </p>
+
+<p id="paragraph-underline">A. Required Licenses</p>
+<p class="form-paragraph">
+Partner shall hold all of the licenses, registrations, and permits that are required
+by applicable law to conduct its business (the “Licenses”). Partner shall maintain
+the Licenses in good standing during the term of this Agreement. Upon request,
+Partner shall provide copies of any License to RLC.</p>
+
+<p id="paragraph-underline">B. Health and Safety</p>
+<p class="form-paragraph">
+Partner shall comply in all material respects with the applicable laws and rules
+governing health, food safety, and sanitation (including, without limitation, the
+laws and rules of the New York City Department of Health). Upon request by RLC,
+Partner shall provide copies of any inspection or examination report conducted by
+any state or local inspector or examiner.</p>
+
+<p class="form-paragraph">Partner shall only provide food to RLC that is, at the time of receipt by RLC, safe
+for human consumption, and not otherwise spoiled or contaminated.</p>
+
+<p id="paragraph-underline">C. Fees</p>
+<p class="form-paragraph">
+In return for monthly data and consolidated reports from RLC, the Partner shall
+support RLC in the amount of $10 for each pickup.</p>
+
+<p id="underline">II. Obligations of RLC</p>
+
+<p id="paragraph-underline">A. Required Status</p>
+<p class="form-paragraph">
+RLC is a duly-qualified non-profit organization under § 501(c)(3) of the Internal
+Revenue Code. RLC meets the eligibility requirements under
+§ 170(e)(3) of the Internal Revenue Code for the receipt, transfer and use of
+donated food products.</p>
+
+<p id="paragraph-underline">B. Free Distribution</p>
+<p class="form-paragraph">
+RLC will distribute food donated by Partner free of charge to its clients. RLC will
+not sell, barter, or otherwise exchange food donated by Partner for money or
+other items of value.</p>
+
+<p id="paragraph-underline">C. Liability Insurance</p>
+<p class="form-paragraph">
+RLC carries sufficient amounts of liability insurance to protect itself against claims
+that are reasonably foreseeable, and to satisfy its indemnity obligations under this
+Agreement.</p>
+
+<p id="underline">III. Indemnity and Limitation of Liability</p>
+
+<p id="paragraph-underline">A. Indemnification of Partner</p>
+<p class="form-paragraph">
+RLC agrees to indemnify, defend and hold harmless Partner, and its control
+persons, employees and agents, from and against any losses, liabilities, damages,
+claims, fines, costs and expenses that were actually incurred (“Losses”),and that
+arise from Partner’s donation of excess food to RLC. Notwithstanding the
+foregoing, this indemnity shall not apply in the event that (i) the Losses were
+caused by the fraud, willful misconduct, bad faith, or criminal conduct of Partner,
+(ii) Partner has materially breached this Agreement, or (iii) Partner has received
+compensation for the Losses from an insurance company or some other
+indemnitor.
+This indemnity shall be in addition to, and not in lieu of, the protections that are
+available to Partner under the Bill Emerson Good Samaritan Food Donation Act,
+and other similar laws or rules.</p>
+
+<p id="paragraph-underline">B. Limitation of Liability</p>
+<p class="form-paragraph">
+In no event shall RLC be liable to Partner, or any other person, under this
+Agreement for special, indirect, incidental, punitive or consequential damages,
+regardless of whether RLC has been advised or might otherwise have anticipated
+the possibility of such damages.</p>
+
+<p id="underline">IV. Term and Termination</p>
+
+<p class="form-paragraph">This Agreement shall continue in full force and effect until terminated by either Party.
+Either Party may terminate this Agreement, with or without cause, upon written notice to
+the other Party.</p>
+
+<p id="underline">V. Governing Law</p>
+
+<p class="form-paragraph">This Agreement shall be governed by the laws of the State of New York, without regard to
+its conflicts of law provisions.</p>
+
+<p id="underline">VI. Authority to Enter Agreement</p>
+
+<p class="form-paragraph">Each person signing this Agreement represents and warrants that he or she is duly
+authorized and has legal capacity to execute and deliver this Agreement. Each Party
+represents and warrants to the other Party that the execution and delivery of the
+Agreement and the performance of such Party’s obligations hereunder has been duly
+authorized, and that the Agreement is a valid and legal agreement binding on such Party
+and enforceable in accordance with its terms.</p>
+<br>
+<strong>AGREED TO AND ACCEPTED:</strong>
+<p>This <%= @time.day.ordinalize %> day of <%= @time.strftime("%B") %>, 2016:</p>
+<div class="clearfix">
+<%= image_tag "signature.png", class: "pull-right"%>
+</div>
+<ul class="list-unstyled pull-right clearfix">
+<li>RESCUING LEFTOVER CUISINE, INC.</li>
+<li>By: Robert Lee</li>
+<li>Chief Executive Officer</li>
+<li>Address: 25 Broadway, 12 th Floor</li>
+<li>New York, NY 10004</li>
+<li>Tel:(646) 592-2229</li>
+<li>Email: robert@rescuingleftovercuisine.org</li>
+</ul>
+<%= form_tag '/generate_pdf', method: 'get' do  %>
+<ul class="list-unstyled">
+<li>By:   <strong><%= text_field_tag :signature, @sign %></strong></li>
+<li>Name of Partner:   <strong><%= current_donor.business_name %></strong></li>
+<li>Address:   <strong><%=  current_donor.address %></strong></li>
+<li>Tel:   <strong><%=  current_donor.phone_number %></strong></li>
+<li>Email:   <strong><%=  current_donor.email %></strong></li>
+</ul>
+<div class="text-center">
+<%= submit_tag "Submit", class: "btn btn-primary btn-lg"%>
+</div>
+<% end %>
+</div>

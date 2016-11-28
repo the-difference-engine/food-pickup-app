@@ -26,4 +26,24 @@ before_action :authenticate_donor!
       render "new"
     end
   end
+
+  def agreement
+    @time = Time.now
+  end
+
+  def generate_pdf
+    @time = Time.now
+    @sign = params[:signature]
+    html = render_to_string(action: :agreement, layout: 'agreement.html.erb')
+    pdf = WickedPdf.new.pdf_from_string(html)
+    AgreementMailer.send_agreement(pdf, current_donor).deliver_now
+
+    if @sign.length != 0
+      flash[:success] = "Please check your email for a signed copy of the agreement."
+      redirect_to '/'
+    else
+      flash[:danger] = "Please sign form and submit it again."
+      render 'agreement'
+    end
+  end
 end
