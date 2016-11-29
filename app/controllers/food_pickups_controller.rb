@@ -27,6 +27,14 @@ before_action :authenticate_donor!
     end
   end
 
+  def show
+    @food_pickup = FoodPickup.find_by(id: params[:id])
+  end
+
+  def update
+    redirect_to '/'
+  end
+
   def agreement
     @time = Time.now
   end
