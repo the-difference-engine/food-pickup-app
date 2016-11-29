@@ -1,0 +1,47 @@
+<%= form_tag("/new-pickup", method: "post") do %>
+
+
+<div class="field">
+  <%= label_tag :picture %><br />
+  <%= text_field_tag :picture, @food_pickup.picture %>
+</div>
+
+<div class="field">
+  <%= label_tag :description %><br />
+  <%= text_field_tag :description, @food_pickup.description %>
+</div>
+
+<div class="field">
+  <%= label_tag :quantity %>(lbs)<br />
+  <%= number_field_tag :quantity, @food_pickup.quantity %>
+</div>
+
+<div class="field">
+  <%= label_tag :contact_name %><br />
+  <%= text_field_tag :contact_name, current_donor.contact_name %>
+</div>
+
+<div class="field">
+  <%= label_tag :location %><br />
+  <%= text_field_tag :location, current_donor.address %>
+</div>
+
+<div class="field">
+  <%= label_tag :phone_number %><br />
+  <%= text_field_tag  :phone_number, current_donor.phone_number %>
+</div>
+
+
+<div class="field">
+  <%= label_tag "Earliest Pick-up Time:" %><br />
+  <%= datetime_field_tag :start_time, @food_pickup.start_time.to_datetime%>
+</div>
+
+<div class="field">
+  <%= label_tag "Latest Pick-up Time:" %><br />
+  <%= datetime_field_tag :end_time, @food_pickup.end_time.to_s%>
+</div>
+
+<%= submit_tag "Submit" %>
+
+<% end %>
