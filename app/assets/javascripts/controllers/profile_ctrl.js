@@ -7,18 +7,18 @@
         $scope.approvedDonors = response.data.approved;
         $scope.unapprovedDonors = response.data.unapproved;
       });
-    }
+    };
 
     $scope.toggleApprove = function(donor) {
         donor.approved = donor.approved ? 0 : 1;
         var donorParams = {
           id: donor.id,
           approved: donor.approved
-        }
+        };
         $http.patch('/api/v1/profiles/' + donor.id + '.json', donorParams).success(function(response) {
-          var index = $scope.unapprovedDonors.indexOf(donor)
-          $scope.unapprovedDonors.splice(index, 1)
-          $scope.approvedDonors.push(donor)
+          var index = $scope.unapprovedDonors.indexOf(donor);
+          $scope.unapprovedDonors.splice(index, 1);
+          $scope.approvedDonors.push(donor);
         });
     };
 
@@ -28,8 +28,7 @@
         $scope.unapprovedPickups = response.data.unapproved;
       });
     };
-
-    window.$scope = $scope;
+  window.$scope = $scope;
   });
 
 })();

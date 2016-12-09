@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :profiles, only: [:index, :update]
       resources :food_pickups, only: [:index, :update]
+      resources :shelters
     end
   end
 

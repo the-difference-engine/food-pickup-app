@@ -248,6 +248,57 @@
               </div>
           </div>
 
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                  <i class="fa fa-bar-chart-o fa-fw"></i> Shelter Locations
+              </div>
+              <!-- /.panel-heading -->
+
+              <div class="panel-body" ng-controller="sheltersCtrl">
+                <div class="alert col-sm-4" ng-class="{'alert-danger': error, 'alert-success': success}" role="alert">
+                  {{error}}
+                  {{success}}
+                </div>
+                  <div class="row">
+                      <div class="col-lg-12">
+                          <div class="table-responsive">
+                              <table class="table table-bordered table-hover table-striped">
+                                  <thead>
+                                      <tr>
+                                        <div class="alert alert-success hide" id="shelter">
+                                        <th>Name</th>
+                                        <th>Address</th>
+                                        <th>Phone Number</th>
+                                        <th>Email</th>
+                                      </tr>
+                                      <tr>
+                                        <td><input type="text" class="form-control" ng-model="newShelter.name" placeholder="Shelter Name"></td>
+                                        <td><input type="text" class="form-control" ng-model="newShelter.address" placeholder="Shelter Address"></td>
+                                        <td><input type="text" class="form-control" ng-model="newShelter.phone_number" placeholder="Shelter Phone#"></td>
+                                        <td><input type="text" class="form-control" ng-model="newShelter.email" placeholder="Shelter Email"></td>
+                                        <td><button  ng-click='addShelter(newShelter)'>Create Shelter</button></td>
+                                      </tr>
+                                  </thead>
+                                  <tbody ng-init="allShelters()">
+                                      <tr class="odd gradeX" ng-repeat='shelter in shelters'>
+                                          <td>{{shelter.name}}</td>
+                                          <td>{{shelter.address}}</td>
+                                          <td>{{shelter.phone_number}}</td>
+                                          <td>{{shelter.email}}</td>
+                                          <td><button ng-click="removeShelter($index)">Delete shelter</button></td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+                          <!-- /.table-responsive -->
+                      </div>
+                      <!-- /.col-lg-4 (nested) -->
+                      <!-- /.col-lg-8 (nested) -->
+                  </div> <!-- /.row -->
+              </div> <!-- /.panel-body -->
+
+
+          </div> <!-- /.panel-default -->
 
             <!-- /.panel -->
 
