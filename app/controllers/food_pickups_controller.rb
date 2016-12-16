@@ -12,7 +12,8 @@ before_action :authenticate_donor!
       description: params[:description],
       start_time: params[:start_time],
       end_time: params[:end_time],
-      location: params[:location]
+      location: params[:location],
+      reoccurrence: params[:reoccurrence]
     )
     if @food_pickup.valid?
       DonorPickup.create(
@@ -25,6 +26,7 @@ before_action :authenticate_donor!
       flash[:danger] = @food_pickup.errors.full_messages
       render "new"
     end
+    @food_pickup.check_reoccurring(@food_pickup)
   end
 
   def show
