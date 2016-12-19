@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'profiles/:id' => 'profiles#show'
   patch 'profiles/:id' => 'profiles#update'
 
+  resources :charges
+
   namespace :api do
     namespace :v1 do
       resources :profiles, only: [:index, :update]
