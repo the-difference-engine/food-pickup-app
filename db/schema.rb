@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161202001254) do
+ActiveRecord::Schema.define(version: 20161220005849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,8 +43,8 @@ ActiveRecord::Schema.define(version: 20161202001254) do
     t.string   "phone_number"
     t.string   "contact_name"
     t.string   "type_of_donor"
-    t.boolean  "admin",                  default: false
     t.boolean  "terms",                  default: false
+    t.boolean  "admin",                  default: false
     t.boolean  "approved",               default: false
     t.index ["confirmation_token"], name: "index_donors_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_donors_on_email", unique: true, using: :btree
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20161202001254) do
     t.string   "location"
     t.boolean  "approved",     default: false
     t.string   "reoccurrence"
+    t.decimal  "charge"
   end
 
   create_table "shelters", force: :cascade do |t|
