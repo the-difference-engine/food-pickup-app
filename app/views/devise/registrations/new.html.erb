@@ -30,7 +30,16 @@
 
   <div class="field">
     <%= f.label :type_of_donor %><br />
-    <%= f.select :type_of_donor, ["Restaurant", "Catering Company", "Farm", "Retailer", "Event Company", "Office", "Personal Event"] %>
+    <%= f.select :type_of_donor, ["Restaurant", "Office", "Event Company", "Other"] %>
+  </div>
+
+  <div>
+    <ul>
+    <li>Restaurants - $10/pickup (negotiable)</li>
+    <li>Offices - $20/pickup</li>
+    <li>Event Companies (e.g. weddings, bar mitzvahs, corporate events) - $1/guest, minimum $100</li>
+    <li>Other - $100/pickup</li>
+  </ul>
   </div>
 
   <div class="field">
