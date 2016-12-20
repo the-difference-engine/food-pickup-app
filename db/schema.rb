@@ -57,10 +57,11 @@ ActiveRecord::Schema.define(version: 20161202001254) do
     t.integer  "quantity"
     t.datetime "start_time"
     t.datetime "end_time"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.string   "location"
-    t.boolean  "approved",    default: false
+    t.boolean  "approved",     default: false
+    t.string   "reoccurrence"
   end
 
   create_table "shelters", force: :cascade do |t|
