@@ -1,0 +1,30 @@
+<div class="field">
+  <%= label_tag :name %><br />
+  <%= text_field_tag :name, @volunteer.name %>
+</div>
+
+<div class="field">
+  <%= label_tag :street %><br />
+  <%= text_field_tag :street, @volunteer.street %>
+</div>
+
+<div class="field">
+  <%= label_tag :city %><br />
+  <%= text_field_tag :city, @volunteer.city %>
+</div>
+
+<div class="field">
+  <%= label_tag "State" %><br />
+  <%= text_field_tag :state, @volunteer.state, placeholder: "NY" %>
+</div>
+
+
+<div class="field">
+  <%= label_tag :phone_number %><br />
+  <%= text_field_tag :phone_number, @volunteer.phone_number, placeholder: "2124564422" %>
+</div>
+
+<div class="field">
+  <%= label_tag :email %><br />
+  <%= text_field_tag :email, @volunteer.email %>
+</div>

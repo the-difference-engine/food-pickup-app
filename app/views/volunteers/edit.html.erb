@@ -1,0 +1,8 @@
+<h1>Editing <%= @volunteer.name %>:</h1>
+<%= form_tag("/volunteers/#{@volunteer.id}", method: "patch") do %>
+
+<%= render 'form' %>
+
+<%= submit_tag "Submit" %>
+
+<% end %>
