@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+
   devise_for :donors
   root 'donors#index'
   get '/new-pickup' => 'food_pickups#new'
@@ -8,6 +10,8 @@ Rails.application.routes.draw do
   get 'profiles' => 'profiles#index'
   get 'profiles/:id' => 'profiles#show'
   patch 'profiles/:id' => 'profiles#update'
+
+  resources :volunteers
 
   resources :charges
 
