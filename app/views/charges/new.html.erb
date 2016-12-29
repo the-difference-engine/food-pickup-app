@@ -5,9 +5,13 @@
         <p><%= flash[:error] %></p>
       </div>
     <% end %>
-    <label class="amount">
+    <!-- <label class="amount">
       <span>Amount: $5.00</span>
-    </label>
+    </label> -->
+    <div class="amount">
+      <%= label_tag "Amount:" %><br />
+      <span>$<%=(@charge / 100)%></span>
+    </div>
   </article>
 
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
