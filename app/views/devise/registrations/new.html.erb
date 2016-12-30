@@ -33,14 +33,6 @@
     <%= f.select :type_of_donor, ["Restaurant", "Office", "Event Company", "Other"] %>
   </div>
 
-  <div>
-    <ul>
-    <li>Restaurants - $10/pickup (negotiable)</li>
-    <li>Offices - $20/pickup</li>
-    <li>Event Companies (e.g. weddings, bar mitzvahs, corporate events) - $1/guest, minimum $100</li>
-    <li>Other - $100/pickup</li>
-  </ul>
-  </div>
 
   <div class="field">
     <%= f.label :password %>
@@ -55,6 +47,10 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+  <div class="field">
+    <%= f.label :credit_card_information %><br />
+    <%= f. %>
+  </div>
 
   <div>
   <%= link_to "Open Terms and Conditions", 'http://www.rescuingleftovercuisine.org/terms' %>
