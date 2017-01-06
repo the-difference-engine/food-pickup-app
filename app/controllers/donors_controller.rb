@@ -1,6 +1,5 @@
 class DonorsController < ApplicationController
   before_action :authenticate_donor!
-  skip_before_action :verify_authenticity_token
 
   def index
     @food_pickups = current_donor.food_pickups
@@ -13,11 +12,11 @@ class DonorsController < ApplicationController
   end
 
   def new_payment
+    @stripe_publishable_key = Rails.application.secrets.stripe_publishable_key
   end
 
   def create_customer
-    # @test_publishable_key = Rails.application.secrets.test_publishable_key
-    Stripe.api_key = Rails.application.secrets.test_secret_key
+    Stripe.api_key = Rails.application.secrets.stripe_secret_key
     token = params[:stripeToken]
 
     customer = Stripe::Customer.create(

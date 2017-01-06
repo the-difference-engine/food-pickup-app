@@ -1,11 +1,11 @@
-<form action="/donors/payment" method="POST">
+<%= form_tag "/donors/payment", method: :post do %>
   <script
-    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="<%= Rails.application.secrets.stripe_publishable_key %>"
-    data-name="Stripe.com"
-    data-description="Widget"
-    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-    data-locale="auto"
-    data-zip-code="true">
+  src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+  data-key="<%= @stripe_publishable_key %>"
+  data-name="Stripe.com"
+  data-description="Widget"
+  data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+  data-locale="auto"
+  data-zip-code="true">
   </script>
-</form>
+<% end %>
