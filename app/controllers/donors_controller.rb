@@ -16,8 +16,8 @@ class DonorsController < ApplicationController
   end
 
   def create_customer
-    Stripe.api_key = "sk_test_rG4AezyEfV84wVOflssYHgWR"
-
+    # @test_publishable_key = Rails.application.secrets.test_publishable_key
+    Stripe.api_key = Rails.application.secrets.test_secret_key
     token = params[:stripeToken]
 
     customer = Stripe::Customer.create(

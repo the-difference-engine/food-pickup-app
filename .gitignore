@@ -14,8 +14,9 @@
 !/tmp/.keep
 .DS_Store
 schema.rb
-.env
-/locales/env.yml
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# Ignore application configuration
+/config/application.yml
