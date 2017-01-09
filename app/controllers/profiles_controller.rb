@@ -1,7 +1,6 @@
 class ProfilesController < ApplicationController
 before_action :authorize_admin!
 
-
   def index
     @donors = Donor.where(approved: false)
   end

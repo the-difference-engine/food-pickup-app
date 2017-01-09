@@ -15,7 +15,7 @@
                             <i class="fa fa-tasks fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge"> </div>
+                            <div class="huge"> <%= @donor.count %> </div>
                             <div>New Pending Profiles!</div>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                             <i class="fa fa-shopping-cart fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">124</div>
+                            <div class="huge"><%= @unapproved_pickups.count %></div>
                             <div>New Pickup Requests!</div>
                         </div>
                     </div>
@@ -119,17 +119,18 @@
                                             <th>Start time</th>
                                             <th>End time</th>
                                             <th>Location</th>
+                                            <th>View Request</th>
                                         </tr>
                                     </thead>
                                     <tbody ng-init="adminFoodPickups()">
                                         <tr class="odd gradeX" ng-repeat='pickup in unapprovedPickups'>
-                                            <td>{{pickup.approved}}</td>
                                             <td>{{pickup.picture}}</td>
                                             <td>{{pickup.description}}</td>
                                             <td>{{pickup.quantity}}</td>
                                             <td>{{pickup.start_time | date:'short'}}</td>
                                             <td>{{pickup.end_time | date:'short'}}</td>
                                             <td>{{pickup.location}}</td>
+                                            <td> <a href="/pickup/{{pickup.id}}"> View </a> </td>
                                         </tr>
                                     </tbody>
                                 </table>
