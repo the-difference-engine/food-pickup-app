@@ -36,6 +36,8 @@ before_action :authenticate_donor!
   end
 
   def update
+    @food_pickup = FoodPickup.find_by(id: params[:id])
+    @food_pickup.update(food_pickup_params)
     redirect_to '/'
   end
 
@@ -58,4 +60,10 @@ before_action :authenticate_donor!
       render 'agreement'
     end
   end
+end
+
+private
+
+def food_pickup_params
+  params.permit(:reoccurrence)
 end
