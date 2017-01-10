@@ -1,4 +1,5 @@
 <%= form_tag("/pickup/#{@food_pickup.id}/edit", method: "patch") do %>
+
 <div class="field">
   <%= label_tag :contact_name %><br />
   <%= text_field_tag :contact_name, current_donor.contact_name %>
@@ -34,5 +35,5 @@
   <%= label_tag "You will be charged #{number_to_currency(current_donor.charge)}" %>
 </div>
 
-    <%= submit_tag "Approve" %>
+  <%= submit_tag "Approve" %>
 <% end %>
