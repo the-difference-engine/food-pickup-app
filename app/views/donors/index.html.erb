@@ -120,6 +120,7 @@
                                             <th>Start time</th>
                                             <th>End time</th>
                                             <th>Location</th>
+                                            <th>Recurrence</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -131,6 +132,14 @@
                                             <td><%= pickup.start_time %></td>
                                             <td><%= pickup.end_time %></td>
                                             <td><%= pickup.location %></td>
+                                            <td>
+                                              <%= pickup.reoccurrence %>
+                                            </td>
+                                            <td>
+                                              <% if pickup.reoccurrence != "None" %>
+                                                <%= link_to "Cancel Recurrence", food_pickup_path(id: pickup.id, reoccurrence: "None"), class: "btn btn-warning", method: :patch  %>
+                                              <% end %>
+                                            </td>
                                             <td><%= link_to "Use Pick-up", "/pickup/#{pickup.id}" %></td>
                                         </tr>
                                         <% end %>

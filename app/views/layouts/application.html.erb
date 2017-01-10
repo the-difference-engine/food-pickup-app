@@ -220,7 +220,7 @@
                 <ul class="dropdown-menu dropdown-user">
                     <li><%= link_to "Update User Profile", edit_donor_registration_path %>
                     </li>
-                    <li><a href="/new-pickup">Create New Pickup</a>
+                    <li><%= link_to "Create a new pickup", new_food_pickup_path %>
                     </li>
                     <li class="divider"></li>
                     <li><%= link_to "Log Out", destroy_donor_session_path, :method => :delete %>
