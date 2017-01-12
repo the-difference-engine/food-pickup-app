@@ -3,6 +3,12 @@ class DonorsController < ApplicationController
 
   def index
     @food_pickups = current_donor.food_pickups
+    @donors_unapproved_pickups = 0
+    @donors_approved_pickups = 0
+    @food_pickups.each do |pickup|
+      pickup.approved? ? @donors_approved_pickups += 1 : @donors_unapproved_pickups += 1
+    end
+
   end
 
   def admin_index
