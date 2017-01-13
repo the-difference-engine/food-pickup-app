@@ -1,0 +1,49 @@
+<%= form_tag("/pickup/#{@food_pickup.id}/edit", method: "patch") do %>
+<div class="field">
+  <%= label_tag :contact_name %><br />
+  <%= text_field_tag :contact_name, current_donor.contact_name %>
+</div>
+
+<div class="field">
+  <%= label_tag :location %><br />
+  <%= text_field_tag :location, current_donor.address %>
+</div>
+
+<div class="field">
+  <%= label_tag :phone_number %><br />
+  <%= text_field_tag  :phone_number, current_donor.phone_number %>
+</div>
+
+
+<div class="field">
+  <%= label_tag "Earliest Pick-up Time:" %><br />
+  <%= datetime_field_tag :start_time %>
+</div>
+
+<div class="field">
+  <%= label_tag "Latest Pick-up Time:" %><br />
+  <%= datetime_field_tag :end_time %>
+</div>
+
+<div class="field">
+  <%= label_tag "Reoccurs:" %><br />
+  <%= select_tag "reoccurrence", options_for_select(["None", "Daily", "Weekly", "Monthly", "Yearly"]) %>
+</div>
+
+<div>
+  <% if current_donor.type_of_donor == 'Event Company' %>
+    <%= label_tag "Number of guests" %><br />
+    <%= number_field_tag :number, nil, min: 100 %>
+  <% elsif current_donor.type_of_donor == 'Office' %>
+    <%= label_tag "Pick-up Cost" %><br />
+    <%= text_field_tag :number, 20, :readonly => true %>
+  <% elsif current_donor.type_of_donor == 'Restaurant' %>
+    <%= label_tag "Pick-up Cost" %><br />
+    <%= text_field_tag :number, 10, :readonly => true %>
+  <% else %>
+    <%= label_tag "Pick-up Cost" %><br />
+    <%= text_field_tag :number, 100, :readonly => true %>
+  <% end %>
+</div>
+    <%= submit_tag "Approve" %>
+<% end %>
