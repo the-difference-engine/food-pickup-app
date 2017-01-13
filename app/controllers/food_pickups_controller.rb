@@ -35,7 +35,23 @@ before_action :authenticate_donor!
     @food_pickup = FoodPickup.find_by(id: params[:id])
   end
 
+  def edit
+    @food_pickup = FoodPickup.find_by(id: params[:id])
+  end
+
   def update
+    if current_donor.admin?
+      @food_pickup = FoodPickup.update(
+        approved: params[:approved],
+        quantity: params[:quantity],
+        description: params[:description],
+        start_time: params[:start_time],
+        end_time: params[:end_time],
+        location: params[:location],
+        reoccurrence: params[:reoccurrence],
+        charge: params[:number]
+      )
+    end
     @food_pickup = FoodPickup.find_by(id: params[:id])
     @food_pickup.update(food_pickup_params)
     redirect_to '/'

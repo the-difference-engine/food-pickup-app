@@ -58,7 +58,7 @@
             <!-- /.panel -->
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-bar-chart-o fa-fw"></i> Pending Donor Profiles
+                    <i class="fa fa-bar-chart-o fa-fw"></i> <%= link_to 'Pending Donor Profiles', profiles_path %>
                 </div>
                 <!-- /.panel-heading First Table -->
                 <div class="panel-body">
@@ -130,7 +130,7 @@
                                             <td>{{pickup.start_time | date:'short'}}</td>
                                             <td>{{pickup.end_time | date:'short'}}</td>
                                             <td>{{pickup.location}}</td>
-                                            <td> <a href="/pickup/{{pickup.id}}"> View </a> </td>
+                                            <td> <a href="/pickup/{{pickup.pickup_id}}"> View </a> </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -164,7 +164,6 @@
                                     </thead>
                                     <tbody ng-init="adminFoodPickups()">
                                         <tr class="odd gradeX" ng-repeat='pickup in approvedPickups'>
-                                            <td>{{pickup.approved}}</td>
                                             <td>{{pickup.picture}}</td>
                                             <td>{{pickup.description}}</td>
                                             <td>{{pickup.quantity}}</td>
