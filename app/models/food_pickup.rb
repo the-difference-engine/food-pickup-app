@@ -1,6 +1,5 @@
 class FoodPickup < ApplicationRecord
-  has_many :donor_pickups
-  has_many :donors, through: :donor_pickups
+  belongs_to :donor
   has_many :volunteers, through: :volunteer_food_pickups
 
   scope :approved, -> { where(approved: true) }
@@ -21,11 +20,8 @@ class FoodPickup < ApplicationRecord
           end_time: pickup_copy.end_time += n.year,
           location: pickup_copy.location,
           reoccurrence: pickup_copy.reoccurrence,
+          donor_id: pickup_copy.donor_id,
           approved: true
-        )
-        DonorPickup.create(
-          donor_id: current_donor.id,
-          food_pickup_id: reoccur_pickup.id
         )
         n += 1
       end
@@ -40,11 +36,8 @@ class FoodPickup < ApplicationRecord
           end_time: pickup_copy.end_time += n.month,
           location: pickup_copy.location,
           reoccurrence: pickup_copy.reoccurrence,
+          donor_id: pickup_copy.donor_id,
           approved: true
-        )
-        DonorPickup.create(
-          donor_id: current_donor.id,
-          food_pickup_id: reoccur_pickup.id
         )
         n += 1
       end
@@ -59,11 +52,8 @@ class FoodPickup < ApplicationRecord
           end_time: pickup_copy.end_time += n.week,
           location: pickup_copy.location,
           reoccurrence: pickup_copy.reoccurrence,
+          donor_id: pickup_copy.donor_id,
           approved: true
-        )
-        DonorPickup.create(
-          donor_id: current_donor.id,
-          food_pickup_id: reoccur_pickup.id
         )
         n += 1
       end
@@ -78,11 +68,8 @@ class FoodPickup < ApplicationRecord
           end_time: pickup_copy.end_time += n.day,
           location: pickup_copy.location,
           reoccurrence: pickup_copy.reoccurrence,
+          donor_id: pickup_copy.donor_id,
           approved: true
-        )
-        DonorPickup.create(
-          donor_id: current_donor.id,
-          food_pickup_id: reoccur_pickup.id
         )
         n += 1
       end
