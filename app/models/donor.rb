@@ -5,8 +5,7 @@ class Donor < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
   validates :terms, acceptance: true
   validates :business_name, :address, :phone_number, :contact_name, :type_of_donor, presence: true
-  has_many :donor_pickups
-  has_many :food_pickups, through: :donor_pickups
-
+  has_many :food_pickups
   scope :not_admin, -> { where(admin: false) }
+
 end

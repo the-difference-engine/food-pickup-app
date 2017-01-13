@@ -14,14 +14,11 @@ before_action :authenticate_donor!
           end_time: params[:end_time],
           location: params[:location],
           reoccurrence: params[:reoccurrence],
-          charge: params[:number]
+          charge: params[:number],
+          donor_id: current_donor.id
         )
 
       if @food_pickup.valid?
-        DonorPickup.create(
-          donor_id: current_donor.id,
-          food_pickup_id: @food_pickup.id
-        )
         redirect_to '/'
         flash[:success] = "The pickup was successfully created"
       else
