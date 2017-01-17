@@ -8,7 +8,7 @@ class DonorsController < ApplicationController
   end
 
   def admin_index
-    if current_donor.admin == false
+    if current_donor.admin?
       redirect_to '/'
     else
       @donor = Donor.where(approved: false)
