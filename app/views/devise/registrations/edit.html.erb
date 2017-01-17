@@ -34,6 +34,12 @@
     <%= f.email_field :email, autofocus: true %>
   </div>
 
+  <div class="field">
+    <p>Your current charge is: <%= number_to_currency(current_donor.charge) %></p>
+    <%= f.label :negotiable, "I want to negotiate my charge" %>
+    <%= f.check_box :negotiable %>
+  </div>
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
