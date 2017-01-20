@@ -25,16 +25,15 @@ class DonorsController < ApplicationController
 
   def update_rate
     negotiable_profile = Donor.find_by(id: params[:id])
-    @rate = negotiable_profile.update(
+    if negotiable_profile.update(
       charge: params[:charge],
       negotiable: false
     )
-    redirect_to '/admin'
-    if @rate
       flash[:success] = "The rate was updated successfully."
     else
       flash[:danger] = "Something went wrong, please refresh and try again."
     end
+    redirect_to '/admin'
   end
 
   def new_payment
