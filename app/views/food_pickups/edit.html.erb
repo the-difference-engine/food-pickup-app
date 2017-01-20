@@ -1,4 +1,17 @@
 <%= form_tag("/pickup/#{@food_pickup.id}/edit", method: "patch") do %>
+<div>
+  <img src="<%= @food_pickup.picture %>" alt="Food Picture" style="width=302px;height:228px">
+</div>
+
+<div class="field">
+  <%= label_tag :description %><br />
+  <%= text_field_tag :description, @food_pickup.description %>
+</div>
+
+<div class="field">
+  <%= label_tag :quantity %>(lbs)<br />
+  <%= number_field_tag :quantity, @food_pickup.quantity %>
+</div>
 
 <div class="field">
   <%= label_tag :contact_name %><br />
@@ -15,15 +28,14 @@
   <%= text_field_tag  :phone_number, current_donor.phone_number %>
 </div>
 
-
 <div class="field">
   <%= label_tag "Earliest Pick-up Time:" %><br />
-  <%= datetime_field_tag :start_time %>
+  <%= datetime_field_tag :start_time, @food_pickup.start_time.strftime('%Y-%m-%dT%I:%M:%S') %>
 </div>
 
 <div class="field">
   <%= label_tag "Latest Pick-up Time:" %><br />
-  <%= datetime_field_tag :end_time %>
+  <%= datetime_field_tag :end_time, @food_pickup.end_time.strftime('%Y-%m-%dT%I:%M:%S') %>
 </div>
 
 <div class="field">
@@ -35,5 +47,17 @@
   <%= label_tag "You will be charged #{number_to_currency(current_donor.charge)}" %>
 </div>
 
-  <%= submit_tag "Approve" %>
+<div>
+  <%= label_tag :charge %><br />
+  <%= number_field_tag :charge, @food_pickup.charge.to_i, :class => 'text_field', :step => 'any' %>
+</div>
+
+<div>
+  <%= @food_pickup.approved %>
+<%= label_tag "Approve Pickup:" %><br />
+<%= select_tag :approved, options_for_select([["Approved", true], ["Unapproved", false]], selected: @food_pickup.approved) %>
+</div>
+
+<%= submit_tag "Approve" %>
+
 <% end %>
