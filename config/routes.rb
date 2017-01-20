@@ -25,4 +25,8 @@ Rails.application.routes.draw do
   get '/generate_pdf' => 'food_pickups#generate_pdf'
   get "/donors/payment" => 'donors#new_payment'
   post "/donors/payment" => 'donors#create_customer'
+
+  get "/donor/:id/negotiate" => 'donors#negotiate'
+  patch "/donor/:id/negotiate" => 'donors#update_rate'
+
 end

@@ -57,8 +57,8 @@ ActiveRecord::Schema.define(version: 20170113015009) do
     t.string   "location"
     t.boolean  "approved",     default: false
     t.string   "reoccurrence"
-    t.integer  "donor_id"
     t.decimal  "charge"
+    t.integer  "donor_id"
   end
 
   create_table "shelters", force: :cascade do |t|
