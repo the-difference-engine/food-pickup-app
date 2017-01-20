@@ -10,14 +10,20 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize_admin!
-     unless current_donor && current_donor.admin
+     unless current_donor && current_donor.admin?
        flash[:warning]= "You have to be an Admin."
        redirect_to '/'
      end
   end
 
+  def authorize_donor!
+     unless current_donor && !current_donor.admin?
+       flash[:warning]= "You do not have access to the Donor's Page."
+       redirect_to '/admin'
+     end
+  end
+
   def after_sign_in_path_for(resource)
-    return profiles_path if resource.admin
-    return root_path if !current_donor.admin
+    resource.admin? ? admin_path : root_path
   end
 end

@@ -1,5 +1,8 @@
 class DonorsController < ApplicationController
   before_action :authenticate_donor!
+  before_action :authorize_admin!, only: [:admin_index]
+  before_action :authorize_donor!, only: [:index]
+
 
   def index
     @food_pickups = current_donor.food_pickups
@@ -8,15 +11,29 @@ class DonorsController < ApplicationController
   end
 
   def admin_index
-    if current_donor.admin?
-      redirect_to '/'
+    @donor = Donor.where(approved: false, admin: false)
+    @donors = Donor.not_admin
+    @pickup = FoodPickup.find_by(id: params[:id])
+    @approved_pickups = FoodPickup.approved
+    @unapproved_pickups = FoodPickup.unapproved
+    @negotiable_profiles = Donor.where(negotiable: true)
+  end
+
+  def negotiate
+    @negotiable_profile = Donor.find_by(id: params[:id])
+  end
+
+  def update_rate
+    negotiable_profile = Donor.find_by(id: params[:id])
+    if negotiable_profile.update(
+      charge: params[:charge],
+      negotiable: false
+    )
+      flash[:success] = "The rate was updated successfully."
     else
-      @donor = Donor.where(approved: false)
-      @donors = Donor.not_admin
-      @pickup = FoodPickup.find_by(id: params[:id])
-      @approved_pickups = FoodPickup.approved
-      @unapproved_pickups = FoodPickup.unapproved
+      flash[:danger] = "Something went wrong, please refresh and try again."
     end
+    redirect_to '/admin'
   end
 
   def new_payment
