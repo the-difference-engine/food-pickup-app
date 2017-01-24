@@ -3,7 +3,7 @@ reoccurrence = ["None", "Daily", "Weekly", "Monthly", "Yearly"]
 
 20.times do
   password = Faker::Internet.password(10, 20)
-  donor = Donor.create({
+  donor = Donor.new({
       email: Faker::Internet.email,
       password: password,
       password_confirmation: password,
@@ -15,6 +15,7 @@ reoccurrence = ["None", "Daily", "Weekly", "Monthly", "Yearly"]
       terms: true
   })
   donor.skip_confirmation!
+  donor.save
 end
 
 Donor.all.each do |donor|
