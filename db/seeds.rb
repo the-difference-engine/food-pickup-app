@@ -14,7 +14,7 @@ reoccurrence = ["None", "Daily", "Weekly", "Monthly", "Yearly"]
       type_of_donor: donor_types.sample,
       terms: true
   })
-  donor.confirm
+  donor.skip_confirmation!
 end
 
 Donor.all.each do |donor|
