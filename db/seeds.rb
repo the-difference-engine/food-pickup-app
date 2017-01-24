@@ -1,7 +1,34 @@
-Donor.create!([
-  {email: "no@apple.com", password: "abc123", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "V32y7kSy7eoDh1AZDATi", confirmed_at: nil, confirmation_sent_at: "2016-10-27 00:26:52", business_name: "Leo Street", address: "Leo Street", phone_number: "565-555-7777", contact_name: "Leo New", type_of_donor: "Event Company", admin: false, terms: true, approved: true},
-  {email: "leo@example.com", password: "abc123", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "-8P7TNzSMXyofSWqEP-A", confirmed_at: nil, confirmation_sent_at: "2016-10-27 00:15:11", business_name: "Leon's", address: "456 Leon St", phone_number: "555-555-5555", contact_name: "Leon's", type_of_donor: "Event", admin: false, terms: true, approved: true},
-  {email: "hgranger@hogwarts.edu", password: "abc123", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, confirmation_token: "e6PD7AZRfBwTWwoZFCyX", confirmed_at: nil, confirmation_sent_at: "2016-10-21 00:57:46", business_name: "Hermione's Secret Shop", address: "1 Hogwarts St", phone_number: "444-444-4444", contact_name: "Her", type_of_donor: "Office", admin: false, terms: true, approved: false},
-  {email: "harrypotter@hogwarts.edu", password: "abc123", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 2, current_sign_in_at: "2016-11-07 23:21:55", last_sign_in_at: "2016-11-02 23:06:19", current_sign_in_ip: "::1", last_sign_in_ip: "::1", confirmation_token: "iQvze81XkM64g_zhnQye", confirmed_at: "2016-11-02 23:05:58", confirmation_sent_at: "2016-10-21 00:44:40",
-    business_name: "Car", address: "123 Car St", phone_number: "333-333-3333", contact_name: "Viper", type_of_donor: "Restaurant", admin: true, terms: true, approved: false}
-])
+donor_types = ["Restaurant", "Office", "Event Company", "Other"]
+reoccurrence = ["None", "Daily", "Weekly", "Monthly", "Yearly"]
+
+20.times do
+  password = Faker::Internet.password(10, 20)
+  donor = Donor.create({
+      email: Faker::Internet.email,
+      password: password,
+      password_confirmation: password,
+      business_name: Faker::Company.name,
+      address: Faker::Address.street_address,
+      phone_number: Faker::PhoneNumber.cell_phone,
+      contact_name: Faker::Name.name,
+      type_of_donor: donor_types.sample,
+      terms: true
+  })
+  donor.confirm
+end
+
+Donor.all.each do |donor|
+  rand(2..5).times do
+    time = Faker::Time.forward(23)
+    FoodPickup.create({
+      description: Faker::Lorem.sentence,
+      quantity: rand(100),
+      start_time: time,
+      end_time: time + 1.hour,
+      location: donor.address,
+      donor_id: donor.id,
+      reoccurrence: reoccurrence.sample,
+      charge: donor.charge
+    })
+  end
+end
