@@ -3,8 +3,7 @@ class ChargesController < ApplicationController
   end
 
   def create
-    @amount = 500
-
+    @stripe_charge = (current_donor.charge.to_i * 100)
     customer = Stripe::Customer.create(
       email: params[:stripeEmail],
       source: params[:stripeToken]
@@ -12,7 +11,7 @@ class ChargesController < ApplicationController
 
     charge = Stripe::Charge.create(
       customer: customer.id,
-      amount: @amount,
+      amount: @stripe_charge,
       description: 'Rails Stripe customer',
       currency: 'usd'
     )

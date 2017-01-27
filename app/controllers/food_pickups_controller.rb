@@ -7,6 +7,7 @@ before_action :authenticate_donor!
 
   def create
     @food_pickup = FoodPickup.create(
+      donor_id: current_donor.id,
       picture: params[:picture],
       quantity: params[:quantity],
       description: params[:description],
@@ -14,21 +15,16 @@ before_action :authenticate_donor!
       end_time: params[:end_time],
       location: params[:location],
       reoccurrence: params[:reoccurrence],
-      charge: params[:number]
+      charge: params[:charge]
     )
-
     if @food_pickup.valid?
-      DonorPickup.create(
-        donor_id: current_donor.id,
-        food_pickup_id: @food_pickup.id
-      )
-      redirect_to '/'
       flash[:success] = 'The pickup was successfully created'
+      @food_pickup.check_reoccurring(@food_pickup)
+      redirect_to '/'
     else
       flash[:danger] = @food_pickup.errors.full_messages
       render 'new'
     end
-    @food_pickup.check_reoccurring(@food_pickup)
   end
 
   def edit

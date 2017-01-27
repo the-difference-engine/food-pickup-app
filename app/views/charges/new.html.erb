@@ -10,13 +10,13 @@
     </label> -->
     <div class="amount">
       <%= label_tag "Amount:" %><br />
-      <span>$<%=(@charge / 100)%></span>
+      <span><%=number_to_currency(current_donor.charge)%></span>
     </div>
   </article>
 
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-description="A month's subscription"
-          data-amount="500"
+          data-amount="<%= current_donor.charge * 100 %>"
           data-locale="auto"></script>
 <% end %>
