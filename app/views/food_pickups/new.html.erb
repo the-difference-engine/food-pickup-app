@@ -46,8 +46,15 @@
   <%= select_tag "reoccurrence", options_for_select(["None", "Daily", "Weekly", "Monthly", "Yearly"]) %>
 </div>
 
+<% if current_donor.type_of_donor == "Event Company" %>
+<div class="field" onchange="recalculateTotal()">
+  <%= label_tag "Number of guests that attended the event:" %>
+  <%= number_field_tag :charge, nil, min: 100, id: "charge" %>
+</div>
+<% end %>
+
 <div class="field">
-  <%= label_tag "You will be charged #{number_to_currency(current_donor.charge)}" %>
+  <%= label_tag "You will be charged #{number_to_currency(current_donor.charge)}", nil , id: "costField" %>
 </div>
 
 <%= submit_tag "Submit" %>
