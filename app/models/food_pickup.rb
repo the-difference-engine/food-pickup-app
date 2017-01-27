@@ -1,6 +1,7 @@
 class FoodPickup < ApplicationRecord
   belongs_to :donor
   has_many :volunteers, through: :volunteer_food_pickups
+  mount_uploader :picture, FoodPhotoUploader
 
   scope :approved, -> { where(approved: true) }
   scope :unapproved, -> { where(approved: false) }
