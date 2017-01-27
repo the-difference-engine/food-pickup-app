@@ -45,6 +45,11 @@ group :development, :test do
   gem 'pry-rails'
 
   gem 'dotenv-rails'
+  gem 'factory_girl_rails'
+end
+
+group :test do
+  gem 'database_cleaner'
 end
 
 group :development do
