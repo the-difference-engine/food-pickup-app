@@ -29,4 +29,6 @@ Rails.application.routes.draw do
   get "/donor/:id/negotiate" => 'donors#negotiate'
   patch "/donor/:id/negotiate" => 'donors#update_rate'
 
+  resources :billings
+
 end

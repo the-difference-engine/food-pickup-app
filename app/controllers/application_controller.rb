@@ -24,6 +24,13 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    resource.admin? ? admin_path : root_path
+    if current_donor.admin?
+      admin_path
+    elsif current_donor.sign_in_count == 1
+      new_charge_path
+    else
+      root_path
+    end
   end
+
 end

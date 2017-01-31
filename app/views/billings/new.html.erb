@@ -4,7 +4,7 @@
  Stripe.setPublishableKey('<%= Rails.application.secrets.stripe_publishable_key %>');
 </script>
 
-<%= form_tag charges_path, class: 'form-horizontal', id: 'payment-form' do %>
+<%= form_tag billings_path, class: 'form-horizontal', id: 'payment-form' do %>
 <span class="payment-errors"></span>
 
   <div class="form-group row">
@@ -88,17 +88,5 @@
   </div>
 
   <%= submit_tag "Save Card", class: "btn btn-primary" %>
-  <!-- <article>
-    <% if flash[:error].present? %>
-      <div id="error_explanation">
-        <p><%= flash[:error] %></p>
-      </div>
-    <% end %>
-  </article>
 
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="A month's subscription"
-          data-amount="<%= current_donor.charge * 100 %>"
-          data-locale="auto"></script> -->
 <% end %>
