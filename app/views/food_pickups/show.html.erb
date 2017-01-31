@@ -1,4 +1,4 @@
-<%= form_tag(food_pickups_path, method: "post") do %>
+<%= form_tag(food_pickup_path(@food_pickup.id), method: "patch") do %>
 
 
 <div class="field">
@@ -34,14 +34,14 @@
 
 <div class="field">
   <%= label_tag "Earliest Pick-up Time:" %><br />
-  <%= datetime_field_tag :start_time, @food_pickup.start_time.to_datetime%>
+  <%= datetime_field_tag :start_time, @food_pickup.start_time.strftime('%Y-%m-%dT%I:%M:%S')%>
 </div>
 
 <div class="field">
   <%= label_tag "Latest Pick-up Time:" %><br />
-  <%= datetime_field_tag :end_time, @food_pickup.end_time.to_s%>
+  <%= datetime_field_tag :end_time, @food_pickup.end_time.strftime('%Y-%m-%dT%I:%M:%S')%>
 </div>
 
-<%= submit_tag "Submit" %>
+<%= submit_tag "Update Pickup" %>
 
 <% end %>

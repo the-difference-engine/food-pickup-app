@@ -7,12 +7,12 @@
 
 <div class="field">
   <%= label_tag :description %><br />
-  <%= text_field_tag :description %>
+  <%= text_field_tag :description, @food_pickup.description %>
 </div>
 
 <div class="field">
   <%= label_tag :quantity %>(lbs)<br />
-  <%= number_field_tag :quantity %>
+  <%= number_field_tag :quantity, @food_pickup.quantity %>
 </div>
 
 <div class="field">
@@ -33,12 +33,12 @@
 
 <div class="field">
   <%= label_tag "Earliest Pick-up Time:" %><br />
-  <%= datetime_field_tag :start_time %>
+  <%= datetime_field_tag :start_time, @food_pickup.start_time.strftime("%Y-%m-%dT%I:%M:%S") %>
 </div>
 
 <div class="field">
   <%= label_tag "Latest Pick-up Time:" %><br />
-  <%= datetime_field_tag :end_time %>
+  <%= datetime_field_tag :end_time, @food_pickup.end_time.strftime("%Y-%m-%dT%I:%M:%S") %>
 </div>
 
 <div class="field">
