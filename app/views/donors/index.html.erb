@@ -112,11 +112,18 @@
                                             </td>
                                             <td>
                                               <% if pickup.reoccurrence != "None" %>
-                                                <%= link_to "Cancel Recurrence", food_pickup_path(id: pickup.id, reoccurrence: "None"), class: "btn btn-warning", method: :patch  %>
+                                                <%= link_to "Cancel Recurrence", food_pickup_path(pickup.id, reoccurrence: "None"), class: "btn btn-warning", method: :patch  %>
                                               <% end %>
                                             </td>
 
-                                            <td><%= link_to "Reuse Pick-up", "/pickup/#{pickup.id}" %></td>
+                                            <td><%= link_to "Reuse Pick-up", new_food_pickup_path(id: pickup.id) %></td>
+                                            <td>
+                                              <div class="panel-footer">
+                                                  <span class="pull-left"><%= link_to 'Edit pickup', food_pickup_path(pickup.id) %></span>
+                                                  <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                                  <div class="clearfix"></div>
+                                              </div>
+                                            </td>
                                         </tr>
                                         <% end %>
                                     </tbody>

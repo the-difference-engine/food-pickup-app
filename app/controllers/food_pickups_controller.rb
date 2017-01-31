@@ -2,7 +2,7 @@ class FoodPickupsController < ApplicationController
 before_action :authenticate_donor!
 
   def new
-    @food_pickup = FoodPickup.new
+    params[:id].present? ? @food_pickup = FoodPickup.find(params[:id]) : @food_pickup = FoodPickup.new(start_time: Time.current, end_time: Time.current + 1.hour)
   end
 
   def create
@@ -27,6 +27,10 @@ before_action :authenticate_donor!
     end
   end
 
+  def show
+    @food_pickup = FoodPickup.find_by(id: params[:id])
+  end
+
   def edit
     @food_pickup = FoodPickup.find_by(id: params[:id])
   end
@@ -36,15 +40,16 @@ before_action :authenticate_donor!
     if current_donor.admin?
       @food_pickup.update(
         picture: params[:picture],
-        approved: params[:approved],
         quantity: params[:quantity],
         description: params[:description],
         start_time: params[:start_time],
         end_time: params[:end_time],
         location: params[:location],
         reoccurrence: params[:reoccurrence],
-        charge: params[:charge]
+        charge: params[:charge],
+        approved: params[:approved]
       )
+      redirect_to admin_path
     else
       @food_pickup.update(
         picture: params[:picture],
@@ -55,10 +60,8 @@ before_action :authenticate_donor!
         location: params[:location],
         reoccurrence: params[:reoccurrence]
       )
+      redirect_to root_path
     end
-    @food_pickup = FoodPickup.find_by(id: params[:id])
-    @food_pickup.update(food_pickup_params)
-    redirect_to '/'
   end
 
   def agreement
