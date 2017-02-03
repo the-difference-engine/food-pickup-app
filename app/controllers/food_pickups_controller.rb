@@ -1,6 +1,7 @@
 class FoodPickupsController < ApplicationController
 before_action :authenticate_donor!
 before_action :authorize_admin!, only: :admin_update
+before_action :verify_customer_id, only: [:new, :create]
 
   def new
     params[:id].present? ? @food_pickup = FoodPickup.find(params[:id]) : @food_pickup = FoodPickup.new(start_time: Time.current, end_time: Time.current + 1.hour)
@@ -99,5 +100,12 @@ before_action :authorize_admin!, only: :admin_update
 
   def update_params
     %i(reoccurrence picture quantity description start_time end_time location)
+  end
+
+  def verify_customer_id
+    if current_donor.customer_id.blank?
+      flash[:warning] = "Sorry, you dont have a credit card on file."
+      redirect_to new_billing_path
+    end
   end
 end
