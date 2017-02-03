@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
     if current_donor.admin?
       admin_path
     elsif current_donor.sign_in_count == 1
-      new_charge_path
+      new_billing_path
     else
       root_path
     end

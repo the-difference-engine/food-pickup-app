@@ -1,5 +1,6 @@
 class FoodPickupsController < ApplicationController
 before_action :authenticate_donor!
+before_action :authorize_admin!, only: :admin_update
 
   def new
     params[:id].present? ? @food_pickup = FoodPickup.find(params[:id]) : @food_pickup = FoodPickup.new(start_time: Time.current, end_time: Time.current + 1.hour)
@@ -33,35 +34,13 @@ before_action :authenticate_donor!
 
   def edit
     @food_pickup = FoodPickup.find_by(id: params[:id])
+    @form_path = current_donor.admin? ? admin_update_food_pickup_path(@food_pickup.id) : edit_food_pickup_path(@food_pickup.id)
   end
 
   def update
     @food_pickup = FoodPickup.find_by(id: params[:id])
-    if current_donor.admin?
-      @food_pickup.update(
-        picture: params[:picture],
-        quantity: params[:quantity],
-        description: params[:description],
-        start_time: params[:start_time],
-        end_time: params[:end_time],
-        location: params[:location],
-        reoccurrence: params[:reoccurrence],
-        charge: params[:charge],
-        approved: params[:approved]
-      )
-      redirect_to admin_path
-    else
-      @food_pickup.update(
-        picture: params[:picture],
-        quantity: params[:quantity],
-        description: params[:description],
-        start_time: params[:start_time],
-        end_time: params[:end_time],
-        location: params[:location],
-        reoccurrence: params[:reoccurrence]
-      )
-      redirect_to root_path
-    end
+    @food_pickup.update(food_pickup_params)
+    redirect_to '/'
   end
 
   def agreement
@@ -83,10 +62,42 @@ before_action :authenticate_donor!
       render 'agreement'
     end
   end
-end
 
-private
+  def admin_update
+    @food_pickup = FoodPickup.find_by(id: params[:id])
+    @food_pickup.update(admin_food_pickup_params)
 
-def food_pickup_params
-  params.permit(:reoccurrence)
+    @stripe_charge = (@food_pickup.donor.charge.to_i * 100)
+    if @food_pickup.approved? && @food_pickup.donor.customer_id.present?
+      begin
+        charge = Stripe::Charge.create(
+          customer: @food_pickup.donor.customer_id,
+          amount: @stripe_charge,
+          description: 'Rails Stripe customer',
+          currency: 'usd'
+        )
+      rescue Stripe::CardError => e
+        flash[:error] = e.message
+        redirect_to edit_food_pickup_path(@food_pickup.id) && return
+      end
+      flash[:success] = "The food pickup was successfully charged!"
+    else
+      flash[:success] = "The food pickup was successfully updated!"
+    end
+    redirect_to admin_path
+  end
+
+  private
+
+  def food_pickup_params
+    params.permit(update_params)
+  end
+
+  def admin_food_pickup_params
+    params.permit(update_params << %i(charge approved))
+  end
+
+  def update_params
+    %i(reoccurrence picture quantity description start_time end_time location)
+  end
 end
