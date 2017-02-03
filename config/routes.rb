@@ -3,15 +3,15 @@ Rails.application.routes.draw do
 
   devise_for :donors
   root 'donors#index'
-  resources :food_pickups
+  resources :food_pickups do
+    patch :admin_update, on: :member
+  end
   get '/admin' => 'donors#admin_index'
   get 'profiles' => 'profiles#index'
   get 'profiles/:id' => 'profiles#show'
   patch 'profiles/:id' => 'profiles#update'
 
   resources :volunteers
-
-  resources :charges
 
   namespace :api do
     namespace :v1 do
@@ -28,5 +28,7 @@ Rails.application.routes.draw do
 
   get "/donor/:id/negotiate" => 'donors#negotiate'
   patch "/donor/:id/negotiate" => 'donors#update_rate'
+
+  resources :billings
 
 end
