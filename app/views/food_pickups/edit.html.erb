@@ -43,13 +43,11 @@
     <%= select_tag "reoccurrence", options_for_select(["None", "Daily", "Weekly", "Monthly", "Yearly"]) %>
   </div>
 
-  <div class="field">
-    <%= label_tag "You will be charged #{number_to_currency(@food_pickup.donor.charge)}" %>
-  </div>
+
   <% if current_donor.admin? %>
     <div>
       <%= label_tag :charge %><br />
-      <%= number_field_tag :charge, @food_pickup.donor.charge.to_i, :class => 'text_field', :step => 'any' %>
+      <%= number_field_tag :charge, @food_pickup.charge.to_i, :class => 'text_field', :step => 'any' %>
     </div>
     <div>
       <%= label_tag "Approve Pickup:" %><br />
@@ -57,6 +55,9 @@
     </div>
     <%= submit_tag "Approve" %>
   <% else %>
+    <div class="field">
+      <%= label_tag "You will be charged #{number_to_currency(@food_pickup.donor.charge)}" %>
+    </div>
     <%= submit_tag "Update" %>
   <% end %>
 <% end %>

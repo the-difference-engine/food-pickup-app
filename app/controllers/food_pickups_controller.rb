@@ -68,7 +68,7 @@ before_action :verify_customer_id, only: [:new, :create]
     @food_pickup = FoodPickup.find_by(id: params[:id])
     @food_pickup.update(admin_food_pickup_params)
 
-    @stripe_charge = (@food_pickup.donor.charge.to_i * 100)
+    @stripe_charge = (@food_pickup.charge.to_i * 100)
     if @food_pickup.approved? && @food_pickup.donor.customer_id.present?
       begin
         charge = Stripe::Charge.create(

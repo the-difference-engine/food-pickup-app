@@ -1,6 +1,8 @@
 class FoodPickup < ApplicationRecord
   belongs_to :donor
   has_many :volunteers, through: :volunteer_food_pickups
+  validates :quantity, numericality: true, presence: true
+  validates :description, presence: true
   mount_uploader :picture, FoodPhotoUploader
 
   scope :approved, -> { where(approved: true) }
@@ -24,6 +26,7 @@ class FoodPickup < ApplicationRecord
           donor_id: pickup_copy.donor_id,
           approved: true
         )
+        charge_reoccurring_pickups(reoccur_pickup)
         n += 1
       end
     elsif pickup.reoccurrence == 'Monthly'
@@ -40,6 +43,7 @@ class FoodPickup < ApplicationRecord
           donor_id: pickup_copy.donor_id,
           approved: true
         )
+        charge_reoccurring_pickups(reoccur_pickup)
         n += 1
       end
     elsif pickup.reoccurrence == 'Weekly'
@@ -56,6 +60,7 @@ class FoodPickup < ApplicationRecord
           donor_id: pickup_copy.donor_id,
           approved: true
         )
+        charge_reoccurring_pickups(reoccur_pickup)
         n += 1
       end
     elsif pickup.reoccurrence == 'Daily'
@@ -72,8 +77,23 @@ class FoodPickup < ApplicationRecord
           donor_id: pickup_copy.donor_id,
           approved: true
         )
+        charge_reoccurring_pickups(reoccur_pickup)
         n += 1
       end
+    end
+  end
+
+  def charge_reoccurring_pickups(reoccur_pickup)
+    begin
+      charge = Stripe::Charge.create(
+        customer: reoccur_pickup.donor.customer_id,
+        amount: reoccur_pickup.charge,
+        description: 'Rails Stripe customer',
+        currency: 'usd'
+      )
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
+      reoccur_pickup.update(reoccurrence: 'None')
     end
   end
 end
