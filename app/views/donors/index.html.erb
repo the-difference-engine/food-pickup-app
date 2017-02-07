@@ -101,7 +101,7 @@
                                     <tbody>
                                       <% @food_pickups.each do |pickup| %>
                                         <tr>
-                                            <td><%= pickup.picture %></td>
+                                            <td><%= image_tag pickup.picture %></td>
                                             <td><%= pickup.description %></td>
                                             <td><%= pickup.quantity %></td>
                                             <td><%= pickup.start_time.strftime("%m/%e/%y %I:%M %p") %></td>
