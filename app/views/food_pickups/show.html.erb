@@ -1,6 +1,5 @@
 <%= form_tag(food_pickup_path(@food_pickup.id), method: "patch") do %>
 
-
 <div class="field">
   <%= label_tag :picture %><br />
   <%= text_field_tag :picture, @food_pickup.picture %>
@@ -31,7 +30,6 @@
   <%= text_field_tag  :phone_number, current_donor.phone_number %>
 </div>
 
-
 <div class="field">
   <%= label_tag "Earliest Pick-up Time:" %><br />
   <%= datetime_field_tag :start_time, @food_pickup.start_time.strftime('%Y-%m-%dT%I:%M:%S')%>
@@ -42,6 +40,6 @@
   <%= datetime_field_tag :end_time, @food_pickup.end_time.strftime('%Y-%m-%dT%I:%M:%S')%>
 </div>
 
-<%= submit_tag "Update Pickup" %>
+<%= submit_tag "Update Pickup", class: "btn btn-primary" %>
 
 <% end %>
