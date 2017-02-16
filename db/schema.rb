@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 20170130185920) do
     t.string   "phone_number"
     t.string   "contact_name"
     t.string   "type_of_donor"
-    t.boolean  "terms",                                          default: false
     t.boolean  "admin",                                          default: false
+    t.boolean  "terms",                                          default: false
     t.boolean  "approved",                                       default: false
     t.decimal  "charge",                 precision: 6, scale: 2
     t.boolean  "negotiable",                                     default: false
