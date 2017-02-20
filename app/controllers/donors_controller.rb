@@ -31,6 +31,7 @@ class DonorsController < ApplicationController
       flash[:success] = "The rate was updated successfully."
     else
       flash[:danger] = "Something went wrong, please refresh and try again."
+
     end
     redirect_to '/admin'
   end
