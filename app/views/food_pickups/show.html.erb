@@ -1,8 +1,8 @@
 <%= form_tag(food_pickup_path(@food_pickup.id), method: "patch") do %>
 
 <div class="field">
-  <%= label_tag :picture %><br />
-  <%= text_field_tag :picture, @food_pickup.picture %>
+  <%= image_tag @food_pickup.picture %>
+  <%= file_field_tag :picture, value: @food_pickup.picture %>
 </div>
 
 <div class="field">
