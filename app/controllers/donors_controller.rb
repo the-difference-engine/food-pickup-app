@@ -5,9 +5,8 @@ class DonorsController < ApplicationController
 
 
   def index
-    @food_pickups = current_donor.food_pickups
-    @donors_unapproved_pickups = current_donor.food_pickups.where(approved: false).size
-    @donors_approved_pickups = current_donor.food_pickups.where(approved: true).size
+    @donors_approved = current_donor.food_pickups.where(approved: true)
+    @donors_unapproved = current_donor.food_pickups.where(approved: false)
   end
 
   def admin_index

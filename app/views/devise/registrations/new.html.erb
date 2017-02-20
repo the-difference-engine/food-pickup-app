@@ -1,60 +1,71 @@
-<h2>Sign up</h2>
+<div class="container">
+  <div id="logo-container"><img src="http://www.rescuingleftovercuisine.org/assets/RLC_LOGO-900fcd5d7d719b63e43d29ac23775f74f17100194e2690e17833a091b016da85.png" alt="Rescuing Leftover Cuisine Logo" style="width=302px;height:228px"></div>
+    <div class="row">
+      <div class="Absolute-Center is-Responsive">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+          <h2>Sign Up</h2>
+          <h4>
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= devise_error_messages! %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+            <div class="field">
+              <%= f.label :contact_name %><br />
+              <%= f.text_field :contact_name %>
+            </div>
 
-  <div class="field">
-    <%= f.label :contact_name %><br />
-    <%= f.text_field :contact_name %>
+            <div class="field">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true %>
+            </div>
+
+            <div class="field">
+              <%= f.label :business_name %><br />
+              <%= f.text_field :business_name %>
+            </div>
+
+            <div class="field">
+              <%= f.label :address %><br />
+              <%= f.text_field :address %>
+            </div>
+
+            <div class="field">
+              <%= f.label :phone_number %><br />
+              <%= f.text_field :phone_number %>
+            </div>
+
+            <div class="field">
+              <%= f.label :type_of_donor %><br />
+              <%= f.select :type_of_donor, ["Restaurant", "Office", "Event Company", "Other"] %>
+            </div>
+
+            <div class="field">
+              <%= f.label :password %>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %><br />
+              <%= f.password_field :password, autocomplete: "off" %>
+            </div>
+
+            <div class="field">
+              <%= f.label :password_confirmation %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "off" %>
+            </div>
+
+            <div>
+              <%= link_to "Open Terms and Conditions", 'http://www.rescuingleftovercuisine.org/terms' %>
+              <h4>I agree to the terms and conditions:</h4>
+              <%= f.check_box :terms %>
+            </div>
+
+            <div>
+              <%= f.submit "Sign Up", :class => "btn btn-primary" %>
+            </div>
+          <% end %>
+
+          <%= render "devise/shared/links" %>
+        </h4>
+
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :business_name %><br />
-    <%= f.text_field :business_name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
-  </div>
-
-  <div class="field">
-    <%= f.label :phone_number %><br />
-    <%= f.text_field :phone_number %>
-  </div>
-
-  <div class="field">
-    <%= f.label :type_of_donor %><br />
-    <%= f.select :type_of_donor, ["Restaurant", "Office", "Event Company", "Other"] %>
-  </div>
-
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div>
-  <%= link_to "Open Terms and Conditions", 'http://www.rescuingleftovercuisine.org/terms' %>
-  <h4>I agree to the terms and conditions:</h4>
-  <%= f.check_box :terms %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>

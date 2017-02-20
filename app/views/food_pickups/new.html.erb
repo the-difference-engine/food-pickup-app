@@ -57,6 +57,6 @@
   <%= label_tag "You will be charged #{number_to_currency(current_donor.charge)}", nil , id: "costField" %>
 </div>
 
-<%= submit_tag "Submit" %>
+<%= submit_tag "Submit", class: "btn btn-primary" %>
 
 <% end %>
