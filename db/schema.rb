@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(version: 20170130185920) do
     t.string   "location"
     t.boolean  "approved",                             default: false
     t.string   "reoccurrence"
-    t.integer  "donor_id"
     t.decimal  "charge",       precision: 5, scale: 2
+    t.integer  "donor_id"
     t.boolean  "paid",                                 default: false
   end
 
