@@ -16,7 +16,12 @@
                 <span class="sr-only">Toggle navigation</span>
                 <span class="glyphicon glyphicon-menu-hamburger"></span>
             </button>
-            <a class="navbar-brand" href="/">Rescue Leftover Cuisine</a>
+            <% if current_donor && current_donor.admin? %>
+              <%= link_to "Rescuing Leftover Cuisine", admin_path, class: "navbar-brand" %>
+            <% else %>
+              <%= link_to "Rescuing Leftover Cuisine", root_path, class: "navbar-brand" %>
+            <% end %>
+            <!-- <a class="navbar-brand" href="/">Rescue Leftover Cuisine</a> -->
         </div>
         <!-- /.navbar-header -->
         <div class="collapse navbar-collapse">

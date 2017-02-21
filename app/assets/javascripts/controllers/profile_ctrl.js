@@ -6,6 +6,7 @@
       $http.get("/api/v1/profiles.json").then(function(response) {
         $scope.approvedDonors = response.data.approved;
         $scope.unapprovedDonors = response.data.unapproved;
+        $scope.donorCount = $scope.unapprovedDonors.length;
       });
     };
 
@@ -20,6 +21,7 @@
           $scope.unapprovedDonors.splice(index, 1);
           $scope.approvedDonors.push(donor);
         });
+        $scope.donorCount -= 1;
     };
 
     $scope.adminFoodPickups = function() {
