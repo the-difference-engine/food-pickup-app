@@ -1,36 +1,37 @@
-<h2> Donor Account </h2>
+<div class='fullPageHeight'>
+  <h2> Donor Account </h2>
 
-<div>
-  <p> Contact Name: <%= @donor.contact_name %></P>
-</div>
+  <div>
+    <p> Contact Name: <%= @donor.contact_name %></P>
+  </div>
 
-<div>
-  <P> Email: <%= @donor.email %> </p>
-</div>
+  <div>
+    <P> Email: <%= @donor.email %> </p>
+  </div>
 
-<div>
-  <p> Business Name: <%= @donor.business_name %></p>
-</div>
+  <div>
+    <p> Business Name: <%= @donor.business_name %></p>
+  </div>
 
-<div>
-  <p> Address: <%= @donor.address %></p>
-</div>
+  <div>
+    <p> Address: <%= @donor.address %></p>
+  </div>
 
-<div>
-  <p> Phone Number: <%= @donor.phone_number %></p>
-</div>
+  <div>
+    <p> Phone Number: <%= @donor.phone_number %></p>
+  </div>
 
-<div>
-  <p> Type Of Donor: <%= @donor.type_of_donor %></P>
-</div>
+  <div>
+    <p> Type Of Donor: <%= @donor.type_of_donor %></P>
+  </div>
 
+  <div>
+    <% if !@donor.approved %>
+    <%= button_to "Pending - Click to Approve", "/profiles/#{@donor.id}", {method: :patch, class: "btn btn-warning"} %>
+    <% end %>
+  </div>
 
-<div>
-  <% if !@donor.approved %>
-  <%= button_to "Pending - Click to Approve", "/profiles/#{@donor.id}", {method: :patch, class: "btn btn-warning"} %>
-  <% end %>
-</div>
-
-<div>
-  <a href="/profiles"> Back to pending approval list</a>
+  <div>
+    <a href="/profiles"> Back to pending approval list</a>
+  </div>
 </div>

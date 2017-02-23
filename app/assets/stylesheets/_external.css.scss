@@ -7,7 +7,7 @@ div.well{
 
 .Absolute-Center {
   margin: auto;
-  position: absolute;
+  //position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;
 }
 
@@ -17,13 +17,6 @@ div.well{
   min-width: 200px;
   max-width: 400px;
   padding: 40px;
-}
-
-.logo-container{
-  margin: auto;
-  margin-bottom: 10px;
-  width:200px;
-  height:30px;
 }
 
 table.scroll {
