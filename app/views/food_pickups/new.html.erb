@@ -1,6 +1,6 @@
-<%= form_tag(food_pickups_path, method: "post", multipart: true) do %>
+<%= form_tag(food_pickups_path, method: "post", multipart: true, class: "fullPageHeight") do %>
 
-<div class="field">
+<div>
   <%= label_tag :picture %><br />
   <%= file_field_tag :picture %>
 </div>

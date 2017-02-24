@@ -1,92 +1,94 @@
-<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<div class="container fullPageHeight">
+  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
-<script type="text/javascript">
- Stripe.setPublishableKey('<%= Rails.application.secrets.stripe_publishable_key %>');
-</script>
+  <script type="text/javascript">
+   Stripe.setPublishableKey('<%= Rails.application.secrets.stripe_publishable_key %>');
+  </script>
 
-<%= form_tag billings_path, class: 'form-horizontal', id: 'payment-form' do %>
-<span class="payment-errors"></span>
+  <%= form_tag billings_path, class: 'form-horizontal', id: 'payment-form' do %>
+  <span class="payment-errors"></span>
 
-  <div class="form-group row">
-    <div class="col-sm-4">
-      <%= label_tag "Credit Card Number" %>
-      <%= text_field_tag :card_number, nil, class: "form-control", "data-stripe" => "number", size: 20 %>
+    <div class="form-group row">
+      <div class="col-sm-4">
+        <%= label_tag "Credit Card Number" %>
+        <%= text_field_tag :card_number, nil, class: "form-control", "data-stripe" => "number", size: 20 %>
+      </div>
     </div>
-  </div>
 
-  <div class="form-group row">
-    <div class="col-sm-6">
-      <%= label_tag "Expiration (MM/YY)", nil, class: 'control-label' %>
-      <div class="row">
-        <div class="col-sm-3">
-        <%= text_field_tag :exp_month, nil, class: "form-control", "data-stripe" => "exp_month", size: 2  %>
-        </div>
-        <div class="col-sm-2">
-          <%= text_field_tag :exp_year, nil, class: "form-control", "data-stripe" => "exp_year", size: 2  %>
+    <div class="form-group row">
+      <div class="col-sm-6">
+        <%= label_tag "Expiration (MM/YY)", nil, class: 'control-label' %>
+        <div class="row">
+          <div class="col-sm-3">
+          <%= text_field_tag :exp_month, nil, class: "form-control", "data-stripe" => "exp_month", size: 2  %>
+          </div>
+          <div class="col-sm-2">
+            <%= text_field_tag :exp_year, nil, class: "form-control", "data-stripe" => "exp_year", size: 2  %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="form-group">
-    <div class="col-md-5">
-      <label class="control-label" for="CCMonth">Card Expiration</label>
-        <div class="row">
-            <div class="col-xs-3">
-                <select class="form-control col-sm-2" name="CCMonth" id="CCMonth">
-                    <option>Month</option>
-                    <option value="01" Selected>Jan (01)</option>
-                    <option value="02">Feb (02)</option>
-                    <option value="03">Mar (03)</option>
-                    <option value="04">Apr (04)</option>
-                    <option value="05">May (05)</option>
-                    <option value="06">June (06)</option>
-                    <option value="07">July (07)</option>
-                    <option value="08">Aug (08)</option>
-                    <option value="09">Sep (09)</option>
-                    <option value="10">Oct (10)</option>
-                    <option value="11">Nov (11)</option>
-                    <option value="12">Dec (12)</option>
-                </select>
-            </div>
-            <div class="col-xs-3">
-                <select class="form-control" name="CCYear">
-                    <option>Year</option>
-                    <option value="15" selected>2015</option>
-                    <option value="16">2016</option>
-                    <option value="17">2017</option>
-                    <option value="18">2018</option>
-                    <option value="19">2019</option>
-                    <option value="20">2020</option>
-                    <option value="21">2021</option>
-                    <option value="22">2022</option>
-                    <option value="23">2023</option>
-                    <option value="24">2024</option>
-                    <option value="25">2025</option>
-                    <option value="26">2026</option>
-                    <option value="27">2027</option>
-                    <option value="28">2028</option>
-                    <option value="29">2029</option>
-                </select>
-            </div>
-        </div> <span class="help-block" style="display: none;">Select the card expiration date month and year.</span>
+    <div class="form-group">
+      <div class="col-md-5">
+        <label class="control-label" for="CCMonth">Card Expiration</label>
+          <div class="row">
+              <div class="col-xs-3">
+                  <select class="form-control col-sm-2" name="CCMonth" id="CCMonth">
+                      <option>Month</option>
+                      <option value="01" Selected>Jan (01)</option>
+                      <option value="02">Feb (02)</option>
+                      <option value="03">Mar (03)</option>
+                      <option value="04">Apr (04)</option>
+                      <option value="05">May (05)</option>
+                      <option value="06">June (06)</option>
+                      <option value="07">July (07)</option>
+                      <option value="08">Aug (08)</option>
+                      <option value="09">Sep (09)</option>
+                      <option value="10">Oct (10)</option>
+                      <option value="11">Nov (11)</option>
+                      <option value="12">Dec (12)</option>
+                  </select>
+              </div>
+              <div class="col-xs-3">
+                  <select class="form-control" name="CCYear">
+                      <option>Year</option>
+                      <option value="15" selected>2015</option>
+                      <option value="16">2016</option>
+                      <option value="17">2017</option>
+                      <option value="18">2018</option>
+                      <option value="19">2019</option>
+                      <option value="20">2020</option>
+                      <option value="21">2021</option>
+                      <option value="22">2022</option>
+                      <option value="23">2023</option>
+                      <option value="24">2024</option>
+                      <option value="25">2025</option>
+                      <option value="26">2026</option>
+                      <option value="27">2027</option>
+                      <option value="28">2028</option>
+                      <option value="29">2029</option>
+                  </select>
+              </div>
+          </div> <span class="help-block" style="display: none;">Select the card expiration date month and year.</span>
+      </div>
     </div>
-  </div>
 
-  <div class="form-group row">
-    <div class="col-sm-1">
-      <%= label_tag "CVC" %>
-      <%= text_field_tag :cvc, nil, class: "form-control", "data-stripe" => "cvc", size: 4 %>
+    <div class="form-group row">
+      <div class="col-sm-1">
+        <%= label_tag "CVC" %>
+        <%= text_field_tag :cvc, nil, class: "form-control", "data-stripe" => "cvc", size: 4 %>
+      </div>
     </div>
-  </div>
 
-  <div class="form-group row">
-    <div class="col-sm-1">
-      <%= label_tag "Billing ZIP Code" %>
-      <%= text_field_tag :zipcode, nil, class: "form-control", "data-stripe" => "address_zip", size: 6 %>
+    <div class="form-group row">
+      <div class="col-sm-1">
+        <%= label_tag "Billing ZIP Code" %>
+        <%= text_field_tag :zipcode, nil, class: "form-control", "data-stripe" => "address_zip", size: 6 %>
+      </div>
     </div>
-  </div>
 
-  <%= submit_tag "Save Card", class: "btn btn-primary" %>
+    <%= submit_tag "Save Card", class: "btn btn-primary" %>
 
-<% end %>
+  <% end %>
+</div>
