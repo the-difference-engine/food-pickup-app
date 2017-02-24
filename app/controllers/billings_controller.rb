@@ -5,8 +5,8 @@ class BillingsController < ApplicationController
 
   def create
     customer = Stripe::Customer.create(
-      :source => params[:stripeToken],
-      :description => current_donor.business_name
+      source: params[:stripeToken],
+      description: current_donor.business_name
     )
     if customer
       current_donor.update(customer_id: customer.id)
