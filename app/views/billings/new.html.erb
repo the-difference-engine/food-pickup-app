@@ -1,32 +1,33 @@
-<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<div class="container fullPageHeight">
+  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
-<script type="text/javascript">
- Stripe.setPublishableKey('<%= Rails.application.secrets.stripe_publishable_key %>');
-</script>
+  <script type="text/javascript">
+   Stripe.setPublishableKey('<%= Rails.application.secrets.stripe_publishable_key %>');
+  </script>
 
-<%= form_tag billings_path, class: 'form-horizontal', id: 'payment-form' do %>
-<span class="payment-errors"></span>
+  <%= form_tag billings_path, class: 'form-horizontal', id: 'payment-form' do %>
+  <span class="payment-errors"></span>
 
-  <div class="form-group row">
-    <div class="col-sm-4">
-      <%= label_tag "Credit Card Number" %>
-      <%= text_field_tag :card_number, nil, class: "form-control", "data-stripe" => "number", size: 20 %>
+    <div class="form-group row">
+      <div class="col-sm-4">
+        <%= label_tag "Credit Card Number" %>
+        <%= text_field_tag :card_number, nil, class: "form-control", "data-stripe" => "number", size: 20 %>
+      </div>
     </div>
-  </div>
 
-  <div class="form-group row">
-    <div class="col-sm-6">
-      <%= label_tag "Expiration (MM/YY)", nil, class: 'control-label' %>
-      <div class="row">
-        <div class="col-sm-3">
-        <%= text_field_tag :exp_month, nil, class: "form-control", "data-stripe" => "exp_month", size: 2  %>
-        </div>
-        <div class="col-sm-2">
-          <%= text_field_tag :exp_year, nil, class: "form-control", "data-stripe" => "exp_year", size: 2  %>
+    <div class="form-group row">
+      <div class="col-sm-6">
+        <%= label_tag "Expiration (MM/YY)", nil, class: 'control-label' %>
+        <div class="row">
+          <div class="col-sm-3">
+          <%= text_field_tag :exp_month, nil, class: "form-control", "data-stripe" => "exp_month", size: 2  %>
+          </div>
+          <div class="col-sm-2">
+            <%= text_field_tag :exp_year, nil, class: "form-control", "data-stripe" => "exp_year", size: 2  %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
   <div class="form-group row">
     <div class="col-sm-1">
@@ -35,13 +36,14 @@
     </div>
   </div>
 
-  <div class="form-group row">
-    <div class="col-sm-1">
-      <%= label_tag "Billing ZIP Code" %>
-      <%= text_field_tag :zipcode, nil, class: "form-control", "data-stripe" => "address_zip", size: 6 %>
+    <div class="form-group row">
+      <div class="col-sm-1">
+        <%= label_tag "Billing ZIP Code" %>
+        <%= text_field_tag :zipcode, nil, class: "form-control", "data-stripe" => "address_zip", size: 6 %>
+      </div>
     </div>
-  </div>
 
-  <%= submit_tag "Save Card", class: "btn btn-primary" %>
+    <%= submit_tag "Save Card", class: "btn btn-primary" %>
 
-<% end %>
+  <% end %>
+</div>
