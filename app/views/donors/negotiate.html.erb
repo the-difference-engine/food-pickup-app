@@ -1,7 +1,7 @@
-<%= form_tag "/donor/#{@negotiable_profile.id}/negotiate", method: :patch do %>
+<%= form_tag "/donor/#{@negotiable_profile.id}/negotiate", method: :patch, class: "fullPageHeight", align: "center" do %>
   <div class="field">
-    <%= label_tag :charge %><br />
+    <%= label_tag :Current_Rate %><br />
     <%= text_field_tag :charge, @negotiable_profile.charge.to_i %>
   </div>
-  <%= submit_tag "Change Rate" %>
+  <%= submit_tag "Change Rate", class: 'btn btn-primary' %>
 <% end %>
