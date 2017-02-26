@@ -108,18 +108,20 @@
                                           <th>Phone</th>
                                           <th>Email</th>
                                           <th>Address</th>
+                                          <th>Negotiate</th>
                                       </tr>
                                     </thead>
                                     <tbody>
                                       <% @negotiable_profiles.each do |donor| %>
                                       <tr class="odd gradeX" >
                                         <td><%= donor.created_at %></td>
-                                        <td><%= link_to "#{donor.business_name}", "/donor/#{donor.id}/negotiate" %></td>
+                                        <td><%= donor.business_name %></td>
                                         <td><%= donor.type_of_donor %></td>
                                         <td><%= donor.contact_name %></td>
                                         <td><%= donor.phone_number %></td>
                                         <td><%= donor.email %></td>
                                         <td><%= donor.address %></td>
+                                        <td><%= link_to "Negotiate Rate", "/donor/#{donor.id}/negotiate", class: 'btn btn-primary' %></td>
                                       </tr>
                                       <% end %>
                                     </tbody>
