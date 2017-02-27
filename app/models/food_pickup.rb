@@ -9,7 +9,6 @@ class FoodPickup < ApplicationRecord
   scope :unapproved, -> { where(approved: false) }
 
   def check_reoccurring(pickup)
-    # pickup_copy = pickup.dup
     s = Rufus::Scheduler.singleton
     n = 1
     if pickup.reoccurrence == 'Yearly'
@@ -24,7 +23,8 @@ class FoodPickup < ApplicationRecord
           location: pickup_copy.location,
           reoccurrence: pickup_copy.reoccurrence,
           donor_id: pickup_copy.donor_id,
-          approved: true
+          approved: true,
+          charge: pickup_copy.charge
         )
         charge_reoccurring_pickups(reoccur_pickup)
         n += 1
@@ -41,7 +41,8 @@ class FoodPickup < ApplicationRecord
           location: pickup_copy.location,
           reoccurrence: pickup_copy.reoccurrence,
           donor_id: pickup_copy.donor_id,
-          approved: true
+          approved: true,
+          charge: pickup_copy.charge
         )
         charge_reoccurring_pickups(reoccur_pickup)
         n += 1
@@ -58,7 +59,8 @@ class FoodPickup < ApplicationRecord
           location: pickup_copy.location,
           reoccurrence: pickup_copy.reoccurrence,
           donor_id: pickup_copy.donor_id,
-          approved: true
+          approved: true,
+          charge: pickup_copy.charge
         )
         charge_reoccurring_pickups(reoccur_pickup)
         n += 1
@@ -75,7 +77,8 @@ class FoodPickup < ApplicationRecord
           location: pickup_copy.location,
           reoccurrence: pickup_copy.reoccurrence,
           donor_id: pickup_copy.donor_id,
-          approved: true
+          approved: true,
+          charge: pickup_copy.charge
         )
         charge_reoccurring_pickups(reoccur_pickup)
         n += 1
@@ -85,12 +88,13 @@ class FoodPickup < ApplicationRecord
 
   def charge_reoccurring_pickups(reoccur_pickup)
     begin
-      charge = Stripe::Charge.create(
+      Stripe::Charge.create(
         customer: reoccur_pickup.donor.customer_id,
-        amount: reoccur_pickup.charge,
+        amount: (reoccur_pickup.charge.to_i * 100),
         description: 'Rails Stripe customer',
         currency: 'usd'
       )
+      reoccur_pickup.update(paid: true)
     rescue Stripe::CardError => e
       flash[:error] = e.message
       reoccur_pickup.update(reoccurrence: 'None')

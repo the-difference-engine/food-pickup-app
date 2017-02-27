@@ -41,7 +41,7 @@
 
 <div class="field">
   <%= label_tag "Reoccurs:" %><br />
-  <%= select_tag "reoccurrence", options_for_select(["None", "Daily", "Weekly", "Monthly", "Yearly"]) %>
+  <%= select_tag "reoccurrence", options_for_select(["None", "Daily", "Weekly", "Monthly", "Yearly"], selected: @food_pickup.reoccurrence) %>
 </div>
 
 

@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :food_pickup do
-    #donor_id { FactoryGirl.create(:donor).id }
+    donor_id nil
     quantity { rand(100) }
     description { Faker::Lorem.sentence }
     start_time { 1.hours.from_now }

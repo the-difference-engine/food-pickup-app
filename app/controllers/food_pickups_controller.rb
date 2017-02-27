@@ -21,7 +21,6 @@ before_action :verify_customer_id, only: [:new, :create]
     )
     if @food_pickup.valid?
       flash[:success] = 'The pickup was successfully created'
-      @food_pickup.check_reoccurring(@food_pickup)
       redirect_to '/'
     else
       flash[:danger] = @food_pickup.errors.full_messages
@@ -70,13 +69,15 @@ before_action :verify_customer_id, only: [:new, :create]
 
     @stripe_charge = (@food_pickup.charge.to_i * 100)
     if @food_pickup.approved? && @food_pickup.donor.customer_id.present?
+      @food_pickup.check_reoccurring(@food_pickup)
       begin
-        charge = Stripe::Charge.create(
+        Stripe::Charge.create(
           customer: @food_pickup.donor.customer_id,
           amount: @stripe_charge,
           description: 'Rails Stripe customer',
           currency: 'usd'
         )
+        @food_pickup.update(paid: true)
       rescue Stripe::CardError => e
         flash[:error] = e.message
         redirect_to edit_food_pickup_path(@food_pickup.id) && return
