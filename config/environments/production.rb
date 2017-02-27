@@ -9,20 +9,7 @@ Rails.application.configure do
   # and those relying on copy on write to perform better.
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
-  config.action_mailer.default_url_options = {
-    host: 'https://rlc-qa.herokuapp.com'
-  }
-  config.action_mailer.asset_host = 'https://rlc-qa.herokuapp.com'
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :authentication => :plain,
-    :address => "smtp.mailgun.org",
-    :port => 587,
-    :domain => ENV['MAILGUN_DOMAIN'],
-    :user_name => ENV['MAILGUN_USERNAME'],
-    :password => ENV['MAILGUN_PASSWORD']
-  }
-
+  config.action_mailer.default_url_options = { :host => 'https://rlc-qa.herokuapp.com/'} #please change this link when you switch to production.
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
