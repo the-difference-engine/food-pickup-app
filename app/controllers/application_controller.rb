@@ -33,4 +33,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def after_sign_up_path_for(resource)
+    "https://rlc-qa.herokuapp.com/donors/sign_in"
+  end
+
 end
