@@ -29,7 +29,8 @@ RSpec.describe FoodPickupsController, type: :controller do
         expect(assigns(:food_pickup)).to eq(@food_pickup)
       end
       it 'changes and updates food pickup attribues' do
-        patch :update, id: @food_pickup, food_pickup: attributes_for(:food_pickup, quantity: 12, description: "Chicken Sandwiches")
+        hash = attributes_for(:food_pickup, quantity: 12, description: "Chicken Sandwiches")
+        patch :update, id: @food_pickup, hash
         # @food_pickup.reload
         expect(@food_pickup.reload.quantity).to eq(12)
         expect(@food_pickup.reload.description).to eq("Chicken Sandwiches")

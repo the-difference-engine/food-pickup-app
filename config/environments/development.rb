@@ -12,14 +12,15 @@ Rails.application.configure do
   # Show full error reports.
   config.consider_all_requests_local = true
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :authentication => :plain,
-    :address => "smtp.mailgun.org",
-    :port => 587,
-    
-
-  }
+  # ActionMailer::Base.delivery_method = :smtp
+  # ActionMailer::Base.smtp_settings = {
+  #   :address => "smtp.mailgun.org",
+  #   :port                   => 587,
+  #   :authentication         => :plain,
+  #   :user_name =>  ENV['MAILGUN_SMTP_LOGIN'],
+  #   :password =>   ENV['MAILGUN_SMTP_PASSWORD'],
+  #   :domain                 => ENV['MAILGUN_DOMAIN']
+  # }
   # Enable/disable caching. By default caching is disabled.
   if Rails.root.join('tmp/caching-dev.txt').exist?
     config.action_controller.perform_caching = true
