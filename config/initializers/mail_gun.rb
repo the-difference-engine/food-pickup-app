@@ -1,10 +1,10 @@
 ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings = {
-  :address => "smtp.mailgun.org",
   :port                   => ENV['MAILGUN_SMTP_PORT'],
-  :authentication         => :plain,
+  :address => ENV['MAILGUN_SMTP_SERVER'],
   :user_name =>  ENV['MAILGUN_SMTP_LOGIN'],
   :password =>   ENV['MAILGUN_SMTP_PASSWORD'],
-  :domain                 => ENV['MAILGUN_DOMAIN'],
+  :domain                 => 'https://rlc-qa.herokuapp.com',
+  :authentication         => :plain,
   :enable_starttls_auto   => false
 }
