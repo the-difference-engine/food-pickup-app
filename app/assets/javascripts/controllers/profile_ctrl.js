@@ -1,5 +1,5 @@
   "use strict";
-  var app = angular.module("app", []);
+  var app = angular.module("app");
 
   app.controller("profileCtrl", ['$scope', '$http', function($scope, $http) {
     $scope.getProfiles = function() {
