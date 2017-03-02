@@ -160,7 +160,7 @@
                                     </thead>
                                     <tbody ng-init="adminFoodPickups()">
                                         <tr class="odd gradeX" ng-repeat='pickup in unapprovedPickups'>
-                                            <td><img src="{{pickup.picture.url}}"></img></td>
+                                            <td><img ng-src="{{pickup.picture.url}}"></img></td>
                                             <td>{{pickup.description}}</td>
                                             <td>{{pickup.quantity}}</td>
                                             <td>{{pickup.start_time | date:'short'}}</td>
@@ -200,7 +200,7 @@
                                     </thead>
                                     <tbody ng-init="adminFoodPickups()">
                                         <tr class="odd gradeX" ng-repeat='pickup in approvedPickups'>
-                                            <td><img src="{{pickup.picture.url}}"></img></td>
+                                            <td><img ng-src="{{pickup.picture.url}}"></img></td>
                                             <td>{{pickup.description}}</td>
                                             <td>{{pickup.quantity}}</td>
                                             <td>{{pickup.start_time | date:'short'}}</td>
