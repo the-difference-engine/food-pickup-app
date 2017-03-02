@@ -6,5 +6,5 @@ ActionMailer::Base.smtp_settings = {
   :password =>   ENV['MAILGUN_SMTP_PASSWORD'],
   :domain                 => 'https://rlc-qa.herokuapp.com',
   :authentication         => :plain,
-  :enable_starttls_auto   => false
+  :enable_starttls_auto   => true
 }
