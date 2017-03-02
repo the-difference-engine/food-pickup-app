@@ -1,7 +1,7 @@
-(function() {
   "use strict";
+  var app = angular.module("app");
 
-  angular.module("app").controller("profileCtrl", ['$scope', '$http', function($scope, $http) {
+  app.controller("profileCtrl", ['$scope', '$http', function($scope, $http) {
     $scope.getProfiles = function() {
       $http.get("/api/v1/profiles.json").then(function(response) {
         $scope.approvedDonors = response.data.approved;
@@ -32,5 +32,3 @@
     };
   window.$scope = $scope;
   }]);
-
-})();

@@ -1,7 +1,7 @@
-(function() {
   "use strict";
+  var app = angular.module("app");
 
-  angular.module("app").controller("sheltersCtrl", ['$scope', '$http', '$timeout', function($scope, $http, $timeout) {
+  app.controller("sheltersCtrl", ['$scope', '$http', '$timeout', function($scope, $http, $timeout) {
     $scope.allShelters = function() {
       $http.get('/api/v1/shelters.json').then(function(response) {
         $scope.shelters = response.data;
@@ -39,4 +39,3 @@
       });
     };
 }]);
-})();
