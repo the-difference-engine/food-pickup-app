@@ -36,11 +36,11 @@ class DonorsController < ApplicationController
   end
 
   def new_payment
-    @stripe_publishable_key = Rails.application.secrets.stripe_publishable_key
+    @stripe_publishable_key = ENV['STRIPE_PUBLISHABLE_KEY']
   end
 
   def create_customer
-    Stripe.api_key = Rails.application.secrets.stripe_secret_key
+    Stripe.api_key = ENV['STRIPE_SECRET_KEY']
     token = params[:stripeToken]
 
     customer = Stripe::Customer.create(
